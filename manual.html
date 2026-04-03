@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voicy | User Manual & Setup Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .manual-content {
+            max-width: 800px;
+            margin: 120px auto;
+            text-align: left;
+        }
+
+        .manual-content h2 {
+            margin-top: 3rem;
+            color: var(--accent);
+        }
+
+        .manual-content h3 {
+            margin-top: 2rem;
+            color: var(--accent-blue);
+        }
+
+        .manual-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-dim);
+        }
+
+        .step-card {
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 2rem;
+        }
+
+        .lang-switch {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stars-container"></div>
+
+    <nav class="glass-nav">
+        <a href="index.html" class="logo">VOICY <span class="accent-dot">.</span></a>
+        <div class="nav-links">
+            <a href="index.html#roadmap">Roadmap</a>
+            <a href="index.html#release">Downloads</a>
+            <button id="theme-toggle" class="theme-toggle">🌓</button>
+        </div>
+    </nav>
+
+    <div class="manual-content animate-reveal">
+        <div id="en-manual">
+            <h1>User Manual: Voicy for Windows</h1>
+            <p>Transform your PC into a private, high-performance AI hub. This guide will help you get started with the
+                Voicy Desktop Launcher.</p>
+
+            <h2>🚀 Quick Start</h2>
+            <div class="step-card">
+                <h3>1. Download & Launch</h3>
+                <p>Download the latest <strong>VoicyLauncher.exe</strong> from the releases section. Run it directly; no
+                    complex installation required.</p>
+            </div>
+            <div class="step-card">
+                <h3>2. Local Brain (Ollama)</h3>
+                <p>Voicy needs a "Brain" to think locally. Download and run <a href="https://ollama.com" target="_blank"
+                        style="color: var(--accent)">Ollama</a>, then open a terminal and type
+                    <code>ollama pull llama3</code>.</p>
+            </div>
+            <div class="step-card">
+                <h3>3. Link Services</h3>
+                <p>In the **Services** tab, click **START** on the Local Backend. Once the heart icon turns green, your
+                    AI is alive!</p>
+            </div>
+
+            <h2>🎙️ Using Voice Chat</h2>
+            <p>Click the **Mic Icon** in the bottom bar to start talking. Voicy uses <strong>Voice Activity Detection
+                    (VAD)</strong>, meaning it will automatically stop listening when you stop speaking.</p>
+
+            <h2>🤖 Telegram Integration</h2>
+            <p>Want to talk to your home AI from your phone? Paste your Telegram Bot Token into the **ENV Manager** tab
+                and start the **Telegram Bot** service. You can now chat with your PC from anywhere in the world.</p>
+
+            <h2>⚠️ Common Fixes</h2>
+            <p><strong>"AI is not responding"</strong>: Ensure Ollama is running in your system tray.<br>
+                <strong>"Mic not picking up"</strong>: Check the <strong>Settings</strong> tab to ensure the correct
+                microphone is selected.
+            </p>
+        </div>
+
+        <div id="ru-manual" style="display: none;">
+            <h1>Руководство пользователя: Voicy для Windows</h1>
+            <p>Превратите свой ПК в частный высокопроизводительный ИИ-хаб. Это руководство поможет вам начать работу с
+                лаунчером Voicy.</p>
+
+            <h2>🚀 Быстрый старт</h2>
+            <div class="step-card">
+                <h3>1. Скачивание и запуск</h3>
+                <p>Скачайте последнюю версию <strong>VoicyLauncher.exe</strong>. Запустите его напрямую; сложная
+                    установка не требуется.</p>
+            </div>
+            <div class="step-card">
+                <h3>2. Локальный мозг (Ollama)</h3>
+                <p>Voicy нужен «мозг» для локального мышления. Скачайте и запустите <a href="https://ollama.com"
+                        target="_blank" style="color: var(--accent)">Ollama</a>, затем откройте терминал и введите
+                    <code>ollama pull llama3</code>.</p>
+            </div>
+            <div class="step-card">
+                <h3>3. Запуск сервисов</h3>
+                <p>На вкладке **Services** нажмите **START** для Local Backend. Как только иконка сердца станет зеленой,
+                    ваш ИИ оживёт!</p>
+            </div>
+
+            <h2>🎙️ Использование голосового чата</h2>
+            <p>Нажмите на **иконку микрофона**, чтобы начать говорить. Voicy использует **VAD (обнаружение активности
+                голоса)**, что означает, что он автоматически перестанет слушать, когда вы закончите говорить.</p>
+
+            <h2>🤖 Интеграция с Telegram</h2>
+            <p>Хотите общаться с домашним ИИ со своего телефона? Вставьте токен вашего Telegram-бота на вкладке **ENV
+                Manager** и запустите сервис **Telegram Bot**. Теперь вы можете общаться со своим ПК из любой точки
+                мира.</p>
+
+            <h2>⚠️ Решение проблем</h2>
+            <p><strong>«ИИ не отвечает»</strong>: Убедитесь, что Ollama запущена в системном трее.<br>
+                <strong>«Микрофон не работает»</strong>: Проверьте вкладку **Settings**, чтобы убедиться, что выбран
+                правильный микрофон.
+            </p>
+        </div>
+    </div>
+
+    <div class="lang-switch">
+        <button onclick="setLang('en')" class="btn-primary" style="padding: 0.5rem 1rem;">EN</button>
+        <button onclick="setLang('ru')" class="btn-primary" style="padding: 0.5rem 1rem;">RU</button>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        function setLang(lang) {
+            document.getElementById('en-manual').style.display = lang === 'en' ? 'block' : 'none';
+            document.getElementById('ru-manual').style.display = lang === 'ru' ? 'block' : 'none';
+        }
+
+        // Custom reveal for manual page
+        setTimeout(() => {
+            document.querySelector('.manual-content').classList.add('active');
+        }, 100);
+    </script>
+</body>
+
+</html>

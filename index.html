@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voicy | The Obsidian of Voice Assistants</title>
+    <meta name="description"
+        content="Voicy: A professional-grade Text and Voice Chat Assistant hub with cross-platform Godot frontends and Python intelligence.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+    <div class="stars-container"></div>
+
+    <nav class="glass-nav">
+        <div class="logo">VOICY <span class="accent-dot">.</span></div>
+        <div class="nav-links">
+            <a href="#roadmap">Roadmap</a>
+            <a href="manual.html">User Guide</a>
+            <a href="#demo">WebGL Demo</a>
+            <a href="#release">Releases</a>
+            <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">🌓</button>
+            <button id="login-btn" class="btn-primary">Sign In</button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1 class="animate-reveal">Listen. Think. <span class="gradient-text">Speak.</span></h1>
+        <p class="animate-reveal delay-1">The professional-grade, cross-platform assistant hub powered by
+            <strong>Faster-Whisper</strong> and <strong>LangChain</strong>.
+        </p>
+        <div class="hero-actions animate-reveal delay-2">
+            <a href="#release" class="btn-glow">Get Desktop Launcher</a>
+            <a href="#demo" class="btn-outline">Open WebGL Player</a>
+        </div>
+
+        <div class="core-visual animate-reveal delay-3">
+            <div class="orb-container">
+                <div class="orb"></div>
+                <div class="orb-ring"></div>
+            </div>
+            <div class="status-badge">SYSTEM STABLE // RAM SAFE</div>
+        </div>
+    </header>
+
+    <section id="roadmap" class="roadmap-section">
+        <h2 class="section-title">Project Roadmap</h2>
+
+        <div class="roadmap-grid">
+            <!-- DONE COLUMN -->
+            <div class="roadmap-col glass-panel animate-reveal">
+                <h3><span class="status-dot green"></span> Accomplished</h3>
+                <ul class="roadmap-list">
+                    <li>
+                        <strong>PC Launcher Refactor</strong>
+                        <p>Dynamic Env Manager with security masking and clipboard support.</p>
+                    </li>
+                    <li>
+                        <strong>Godot Feature Parity</strong>
+                        <p>Service orchestration for Bot/Node/Backend within the Godot UI.</p>
+                    </li>
+                    <li>
+                        <strong>Hardware Integrity</strong>
+                        <p>Smart RAM detection and Whisper model fallback for stability.</p>
+                    </li>
+                    <li>
+                        <strong>Latency Optimization</strong>
+                        <p>Low-latency TTS greetings and hardware verification.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- NEXT COLUMN -->
+            <div class="roadmap-col glass-panel animate-reveal delay-1">
+                <h3><span class="status-dot blue"></span> Upcoming</h3>
+                <ul class="roadmap-list">
+                    <li>
+                        <strong>Premium Cloud Sync</strong>
+                        <p>Supabase-powered remote homelab syncing and persistence.</p>
+                    </li>
+                    <li>
+                        <strong>Mobile Presence</strong>
+                        <p>Native Android and iOS deployment for mobile voice chat.</p>
+                    </li>
+                    <li>
+                        <strong>Multi-Agent Core</strong>
+                        <p>LangChain deep integration with Code/Vision specialist agents.</p>
+                    </li>
+                    <li>
+                        <strong>Advanced Orchestration</strong>
+                        <p>Real-time log streaming and hardware stats in Godot launcher.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo" class="demo-section">
+        <div class="glass-panel demo-container">
+            <div class="demo-header">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="demo-title">Voicy WebGL Terminal</span>
+            </div>
+            <div class="demo-placeholder">
+                <p>Waiting for Neural Link...</p>
+                <div class="loader"></div>
+                <button class="btn-primary">Initialize Web Player</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="release" class="release-section">
+        <h2 class="section-title">Download Current Builds</h2>
+        <div class="release-grid">
+            <div class="release-card glass-panel">
+                <h4>Linux Desktop Node</h4>
+                <p>v1.0.4 - Ubuntu / Arch / Fedora</p>
+                <a href="#" class="btn-outline">Download .AppImage</a>
+            </div>
+            <div class="release-card glass-panel">
+                <h4>Windows Desktop Node</h4>
+                <p>v1.0.4 - Windows 10/11 (NVIDIA Recommended)</p>
+                <a href="#" class="btn-outline">Download .EXE</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 VOICY / voicydroid.com. Powered by MegumiLab AI.</p>
+        <div class="footer-links">
+            <a href="#">Github</a>
+            <a href="#">Terms</a>
+            <a href="#">Security</a>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
