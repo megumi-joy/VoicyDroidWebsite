@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voicy | The Obsidian of Voice Assistants</title>
-    <meta name="description"
-        content="Voicy: A professional-grade Text and Voice Chat Assistant hub with cross-platform Godot frontends and Python intelligence.">
+    <title>Voicy | Minimalist AI Intelligence</title>
+    <meta name="description" content="Simple, professional, and powerful AI assistant hub.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -19,182 +18,74 @@
 <body>
     <div class="stars-container"></div>
 
-    <nav class="glass-nav">
+    <nav class="chatgpt-nav">
         <div class="logo">VOICY <span class="accent-dot">.</span></div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#roadmap">Roadmap</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#release">Launcher</a>
+        <div class="nav-right">
             <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">🌓</button>
-            <button id="login-btn" class="btn-primary"><img src="https://img.icons8.com/color/16/000000/google-logo.png"
-                    style="vertical-align: middle; margin-right: 8px;" />Sign in with Google</button>
+            <button id="login-btn" class="btn-minimal">Sign In</button>
+            <button class="btn-primary">Sign Up</button>
         </div>
     </nav>
 
-    <header class="hero">
-        <h1 class="animate-reveal">Listen. Think. <span class="gradient-text">Speak.</span></h1>
-        <p class="animate-reveal delay-1">The professional-grade, cross-platform assistant hub powered by
-            <strong>Faster-Whisper</strong> and <strong>LangChain</strong>.
-        </p>
-        <div class="hero-actions animate-reveal delay-2">
-            <a href="#release" class="btn-glow">Get Desktop Launcher</a>
-            <a href="demo/" class="btn-outline">Open WebGL Player</a>
-        </div>
+    <main class="chat-interface">
+        <section class="hero-minimal">
+            <h1 class="animate-reveal">How can I assist your <span class="gradient-text">Neural Link</span> today?</h1>
 
-        <div class="core-visual animate-reveal delay-3">
-            <div class="orb-container">
-                <div class="orb"></div>
-                <div class="orb-ring"></div>
-            </div>
-            <div class="status-badge">SYSTEM STABLE // RAM SAFE</div>
-        </div>
-    </header>
-
-    <section id="about" class="about-section animate-reveal">
-        <div class="about-content">
-            <h2 class="section-title">The Solarpunk Mission</h2>
-            <p>Voicy isn't just an assistant; it's a <strong>Neural Link</strong> between your local hardware and global
-                intelligence. We believe in high-tech, low-impact autonomy.</p>
-            <p>By leveraging your own GPU for local voice processing, we reduce server dependency and ensure
-                <strong>Privacy-First</strong> interactions in a beautiful, organic digital garden.</p>
-        </div>
-        <div class="about-image glass-panel">
-            <img id="about-preview"
-                src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800"
-                alt="Solarpunk Future" class="screenshot-img">
-        </div>
-    </section>
-
-    <section id="roadmap" class="roadmap-section">
-        <h2 class="section-title">Project Roadmap</h2>
-
-        <div class="roadmap-grid">
-            <!-- DONE COLUMN -->
-            <div class="roadmap-col glass-panel animate-reveal">
-                <h3><span class="status-dot green"></span> Accomplished</h3>
-                <ul class="roadmap-list">
-                    <li>
-                        <strong>PC Launcher Refactor</strong>
-                        <p>Dynamic Env Manager with security masking and clipboard support.</p>
-                    </li>
-                    <li>
-                        <strong>Godot Feature Parity</strong>
-                        <p>Service orchestration for Bot/Node/Backend within the Godot UI.</p>
-                    </li>
-                    <li>
-                        <strong>Hardware Integrity</strong>
-                        <p>Smart RAM detection and Whisper model fallback for stability.</p>
-                    </li>
-                    <li>
-                        <strong>Latency Optimization</strong>
-                        <p>Low-latency TTS greetings and hardware verification.</p>
-                    </li>
-                </ul>
+            <div class="chat-box-mock animate-reveal delay-1">
+                <input type="text" placeholder="Message Voicy..." disabled>
+                <button class="send-btn">↑</button>
             </div>
 
-            <!-- NEXT COLUMN -->
-            <div class="roadmap-col glass-panel animate-reveal delay-1">
-                <h3><span class="status-dot blue"></span> Upcoming</h3>
-                <ul class="roadmap-list">
-                    <li>
-                        <strong>Premium Cloud Sync</strong>
-                        <p>Supabase-powered remote homelab syncing and persistence.</p>
-                    </li>
-                    <li>
-                        <strong>Mobile Presence</strong>
-                        <p>Native Android and iOS deployment for mobile voice chat.</p>
-                    </li>
-                    <li>
-                        <strong>Multi-Agent Core</strong>
-                        <p>LangChain deep integration with Code/Vision specialist agents.</p>
-                    </li>
-                    <li>
-                        <strong>Advanced Orchestration</strong>
-                        <p>Real-time log streaming and hardware stats in Godot launcher.</p>
-                    </li>
-                </ul>
+            <div class="quick-actions animate-reveal delay-2">
+                <button onclick="window.location.href='#instructions'">How it Works</button>
+                <button onclick="window.location.href='demo/'">Try WebGL Terminal</button>
+                <button onclick="window.location.href='#release'">Download Launcher</button>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="pricing" class="pricing-section animate-reveal">
-        <h2 class="section-title">Elevate Your Intelligence</h2>
-        <div class="pricing-grid">
-            <div class="pricing-card glass-panel premium">
-                <div class="premium-badge">BEST VALUE</div>
-                <h3>Premium Neural Link</h3>
-                <div class="price">$19<span>/mo</span></div>
-                <ul class="features">
-                    <li><span class="feature-icon">✨</span> Antigravity Specialist Agent</li>
-                    <li><span class="feature-icon">⚡</span> High-Priority Multi-Agent Cycles</li>
-                    <li><span class="feature-icon">☁️</span> Unlimited Supabase Cloud Sync</li>
-                    <li><span class="feature-icon">📁</span> OS-Level MCP Tool Access</li>
-                </ul>
-                <div class="payment-actions">
-                    <button class="btn-glow" onclick="alert('Proceeding to Stripe...')">Subscribe via Stripe</button>
-                    <button class="btn-outline" onclick="alert('Proceeding to PayPal...')">Pay with PayPal</button>
+        <section id="instructions" class="instructions-section animate-reveal">
+            <h2 class="section-title">Getting Started</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h4>Install Local Node</h4>
+                    <p>Download the Desktop Launcher for Windows or Linux. This handles your private AI processing.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h4>Configure Settings</h4>
+                    <p>Add your API keys or use local Ollama models via the Godot Environment Manager.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h4>Link & Speak</h4>
+                    <p>Connect your devices and use the high-latency TTS for real-time voice assistance.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="demo" class="demo-section">
-        <div class="glass-panel demo-container">
-            <div class="demo-header">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                <span class="demo-title">Voicy WebGL Terminal</span>
-            </div>
-            <div class="demo-placeholder">
-                <p>Neural Link Ready</p>
-                <div class="loader" style="animation-play-state: paused; border-bottom-color: var(--accent);"></div>
-                <a href="demo/" class="btn-primary">Launch Live Demo</a>
-            </div>
-        </div>
-    </section>
+        <section id="about" class="about-simple animate-reveal">
+            <h3>Solarpunk Intelligence</h3>
+            <p>A Privacy-First, decentralized assistant hub. Local hardware power meets global AI capability. Simple.
+                Clean. Autonomous.</p>
+        </section>
 
-    <section id="billing" class="billing-section animate-reveal">
-        <h2 class="section-title">Billing & Credits</h2>
-        <div class="billing-container glass-panel">
-            <div class="billing-header">
-                <div class="billing-summary">
-                    <p class="label">Current Balance</p>
-                    <p class="amount">$0.00</p>
-                </div>
-                <div class="billing-tier">
-                    <p class="label">Active Subscription</p>
-                    <p class="tier">Free Tier</p>
-                </div>
+        <section id="pricing" class="pricing-simple">
+            <div class="glass-panel pricing-item">
+                <span class="badge">PREMIUM</span>
+                <h4>Neural Link +</h4>
+                <p>Advanced multi-agent cycles & cloud sync.</p>
+                <button class="btn-primary">Upgrade for $19/mo</button>
             </div>
-            <div class="billing-actions">
-                <button class="btn-glow" onclick="alert('Proceeding to Upgrade...')">Upgrade to Premium</button>
-                <button class="btn-outline">View Invoice History</button>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section id="release" class="release-section">
-        <h2 class="section-title">Download Current Builds</h2>
-        <div class="release-grid">
-            <div class="release-card glass-panel">
-                <h4>Linux Desktop Node</h4>
-                <p>v1.0.4 - Ubuntu / Arch / Fedora</p>
-                <a href="#" class="btn-outline">Download .AppImage</a>
-            </div>
-            <div class="release-card glass-panel">
-                <h4>Windows Desktop Node</h4>
-                <p>v1.0.4 - Windows 10/11 (NVIDIA Recommended)</p>
-                <a href="#" class="btn-outline">Download .EXE</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 VOICY / voicydroid.com. Powered by MegumiLab AI.</p>
+    <footer class="minimal-footer">
+        <p>&copy; 2026 VOICY / voicydroid.com</p>
         <div class="footer-links">
+            <a href="#roadmap">Roadmap</a>
             <a href="#">Github</a>
-            <a href="#">Terms</a>
-            <a href="#">Security</a>
+            <a href="#billing">Billing</a>
         </div>
     </footer>
 
