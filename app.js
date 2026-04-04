@@ -79,6 +79,45 @@ if (demoBtn) {
     });
 }
 
+// --- System Status Polling (Phase 20) ---
+const CLOUD_URL = "https://REPLACE_WITH_CLOUD_RUN_URL";
+const PC_URL = "http://localhost:8001"; // Default local or change to Tunnel URL
+
+async function checkSystemHealth() {
+    // 1. Check Cloud Failover
+    try {
+        const resp = await fetch(CLOUD_URL + "/state", { timeout: 3000 });
+        if (resp.ok) {
+            document.getElementById('status-cloud').className = 'status-dot online';
+        } else {
+            document.getElementById('status-cloud').className = 'status-dot offline';
+        }
+    } catch (e) {
+        document.getElementById('status-cloud').className = 'status-dot offline';
+    }
+
+    // 2. Check PC Bridge
+    try {
+        const resp = await fetch(PC_URL + "/state", { timeout: 3000 });
+        if (resp.ok) {
+            const data = await resp.json();
+            document.getElementById('status-pc').className = 'status-dot online';
+            // If PC is up, assume bot is linked to backend
+            document.getElementById('status-bot').className = 'status-dot online';
+        } else {
+            document.getElementById('status-pc').className = 'status-dot offline';
+            document.getElementById('status-bot').className = 'status-dot offline';
+        }
+    } catch (e) {
+        document.getElementById('status-pc').className = 'status-dot offline';
+        document.getElementById('status-bot').className = 'status-dot offline';
+    }
+}
+
+// Poll every 30 seconds
+setInterval(checkSystemHealth, 30000);
+checkSystemHealth();
+
 // Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
