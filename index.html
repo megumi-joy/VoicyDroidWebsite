@@ -22,11 +22,13 @@
     <nav class="glass-nav">
         <div class="logo">VOICY <span class="accent-dot">.</span></div>
         <div class="nav-links">
+            <a href="#about">About</a>
             <a href="#roadmap">Roadmap</a>
-            <a href="demo/">WebGL Demo</a>
-            <a href="#release">Releases</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#release">Launcher</a>
             <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">🌓</button>
-            <button id="login-btn" class="btn-primary">Sign In</button>
+            <button id="login-btn" class="btn-primary"><img src="https://img.icons8.com/color/16/000000/google-logo.png"
+                    style="vertical-align: middle; margin-right: 8px;" />Sign in with Google</button>
         </div>
     </nav>
 
@@ -48,6 +50,21 @@
             <div class="status-badge">SYSTEM STABLE // RAM SAFE</div>
         </div>
     </header>
+
+    <section id="about" class="about-section animate-reveal">
+        <div class="about-content">
+            <h2 class="section-title">The Solarpunk Mission</h2>
+            <p>Voicy isn't just an assistant; it's a <strong>Neural Link</strong> between your local hardware and global
+                intelligence. We believe in high-tech, low-impact autonomy.</p>
+            <p>By leveraging your own GPU for local voice processing, we reduce server dependency and ensure
+                <strong>Privacy-First</strong> interactions in a beautiful, organic digital garden.</p>
+        </div>
+        <div class="about-image glass-panel">
+            <img id="about-preview"
+                src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800"
+                alt="Solarpunk Future" class="screenshot-img">
+        </div>
+    </section>
 
     <section id="roadmap" class="roadmap-section">
         <h2 class="section-title">Project Roadmap</h2>
@@ -101,6 +118,27 @@
         </div>
     </section>
 
+    <section id="pricing" class="pricing-section animate-reveal">
+        <h2 class="section-title">Elevate Your Intelligence</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card glass-panel premium">
+                <div class="premium-badge">BEST VALUE</div>
+                <h3>Premium Neural Link</h3>
+                <div class="price">$19<span>/mo</span></div>
+                <ul class="features">
+                    <li><span class="feature-icon">✨</span> Antigravity Specialist Agent</li>
+                    <li><span class="feature-icon">⚡</span> High-Priority Multi-Agent Cycles</li>
+                    <li><span class="feature-icon">☁️</span> Unlimited Supabase Cloud Sync</li>
+                    <li><span class="feature-icon">📁</span> OS-Level MCP Tool Access</li>
+                </ul>
+                <div class="payment-actions">
+                    <button class="btn-glow" onclick="alert('Proceeding to Stripe...')">Subscribe via Stripe</button>
+                    <button class="btn-outline" onclick="alert('Proceeding to PayPal...')">Pay with PayPal</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="demo" class="demo-section">
         <div class="glass-panel demo-container">
             <div class="demo-header">
@@ -111,6 +149,26 @@
                 <p>Neural Link Ready</p>
                 <div class="loader" style="animation-play-state: paused; border-bottom-color: var(--accent);"></div>
                 <a href="demo/" class="btn-primary">Launch Live Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="billing" class="billing-section animate-reveal">
+        <h2 class="section-title">Billing & Credits</h2>
+        <div class="billing-container glass-panel">
+            <div class="billing-header">
+                <div class="billing-summary">
+                    <p class="label">Current Balance</p>
+                    <p class="amount">$0.00</p>
+                </div>
+                <div class="billing-tier">
+                    <p class="label">Active Subscription</p>
+                    <p class="tier">Free Tier</p>
+                </div>
+            </div>
+            <div class="billing-actions">
+                <button class="btn-glow" onclick="alert('Proceeding to Upgrade...')">Upgrade to Premium</button>
+                <button class="btn-outline">View Invoice History</button>
             </div>
         </div>
     </section>

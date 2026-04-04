@@ -94,6 +94,84 @@ body {
     color: var(--accent);
 }
 
+/* Pricing Section */
+.pricing-section {
+    padding: 100px 5%;
+    text-align: center;
+}
+
+.pricing-grid {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.pricing-card {
+    max-width: 400px;
+    padding: 50px 30px;
+    position: relative;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
+}
+
+.pricing-card.premium {
+    background: rgba(0, 255, 136, 0.05);
+}
+
+.premium-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: var(--bg);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.pricing-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: var(--accent);
+}
+
+.price span {
+    font-size: 1.2rem;
+    color: var(--text-dim);
+}
+
+.features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.features li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-icon {
+    font-size: 1.2rem;
+}
+
+.payment-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .nav-links {
     display: flex;
     gap: 2rem;
@@ -208,6 +286,127 @@ body {
 .btn-outline:hover {
     background: var(--accent);
     color: #fff;
+}
+
+/* About Section */
+.about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5%;
+    align-items: center;
+    padding: 100px 10%;
+}
+
+.about-content h2 {
+    margin-bottom: 1.5rem;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+}
+
+.screenshot-img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Pricing Section */
+.pricing-section {
+    padding: 100px 5%;
+    text-align: center;
+}
+
+.pricing-grid {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.pricing-card {
+    background: var(--surface);
+    backdrop-filter: blur(20px);
+    max-width: 400px;
+    border-radius: 24px;
+    padding: 50px 30px;
+    position: relative;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 30px rgba(46, 125, 80, 0.1);
+}
+
+.premium-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.price {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: var(--accent);
+}
+
+.price span {
+    font-size: 1.2rem;
+    color: var(--text-dim);
+}
+
+.features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.features li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Billing Section */
+.billing-section {
+    padding: 100px 5%;
+}
+
+.billing-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.billing-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.amount {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.tier {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.billing-actions {
+    display: flex;
+    gap: 15px;
 }
 
 /* Core Visual / Orb */
