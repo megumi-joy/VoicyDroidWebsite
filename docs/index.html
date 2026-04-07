@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voicy | Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            display: flex;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .chatgpt-nav {
+            position: fixed;
+            width: 100%;
+            z-index: 2000;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 80px;
+            /* Account for nav */
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .sidebar-nav {
+            padding: 20px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+
+        .sidebar-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 8px 10px;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+            margin-bottom: 2px;
+        }
+
+        .sidebar-link:hover {
+            background: rgba(16, 163, 127, 0.1);
+            color: var(--accent);
+        }
+
+        .sidebar-link.active {
+            background: rgba(16, 163, 127, 0.2);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .doc-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 100px 40px 60px;
+            max-width: 800px;
+        }
+
+        .doc-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .doc-content h2 {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .doc-content h3 {
+            font-size: 1.3rem;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .doc-content p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--text-dim);
+        }
+
+        .doc-content ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            color: var(--text-dim);
+        }
+
+        .doc-content li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .alert-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            body {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .doc-content {
+                margin-left: 0;
+                padding: 100px 20px 40px;
+            }
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+    <nav class="chatgpt-nav">
+        <div class="logo">VOICY <span class="accent-dot">.</span></div>
+        <div class="nav-right">
+            <a href="../index.html" class="btn-minimal" style="text-decoration: none;">Home</a>
+            <a href="../roadmap.html" class="btn-minimal" style="text-decoration: none;">Roadmap</a>
+            <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">🌓</button>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <nav class="sidebar-nav">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Getting Started</div>
+                <a href="#" class="sidebar-link active" onclick="loadContent('intro')">Introduction</a>
+                <a href="#" class="sidebar-link" onclick="loadContent('install')">Installation</a>
+                <a href="#" class="sidebar-link" onclick="loadContent('account')">Account & Sync</a>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Core Services</div>
+                <a href="#" class="sidebar-link" onclick="loadContent('backend')">Local Backend (PC)</a>
+                <a href="#" class="sidebar-link" onclick="loadContent('env')">Environment Manager</a>
+                <a href="#" class="sidebar-link" onclick="loadContent('monitoring')">System Monitoring</a>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Models & Infrastructure</div>
+                <a href="#" class="sidebar-link" onclick="loadContent('local-ai')">Local Intelligence (Ollama)</a>
+                <a href="#" class="sidebar-link" onclick="loadContent('cloud-ai')">Cloud Fallbacks</a>
+                <a href="#" class="sidebar-link" onclick="loadContent('voice')">Voice Infrastructure</a>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Integrations</div>
+                <a href="#" class="sidebar-link" onclick="loadContent('telegram')">Telegram Bot</a>
+                <a href="#" class="sidebar-link" onclick="loadContent('webgl')">WebGL Terminal</a>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Advanced / Developer</div>
+                <a href="#" class="sidebar-link" onclick="loadContent('mcp')">MCP Extensions</a>
+                <a href="#" class="sidebar-link" onclick="loadContent('langchain')">LangChain Memory</a>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="doc-content animate-reveal" id="main-pane">
+        <!-- Content gets injected here via JS -->
+    </main>
+
+    <script>
+        const contentData = {
+            'intro': `
+                <h1>Introduction to Voicy</h1>
+                <p>Voicy is your autonomous, privacy-first, local AI assistant hub. It bridges the gap between the raw computational power of your desktop PC and your mobile devices, providing a seamless "Neural Link" wherever you are.</p>
+                <div class="alert-box">
+                    <strong>Note:</strong> Voicy is designed to run its core "Brain" locally on your machine, rather than relying entirely on third-party cloud servers.
+                </div>
+                <h2>The Architecture</h2>
+                <p>Voicy consists of three main components that work together:</p>
+                <ul>
+                    <li><strong>The Node (Your PC):</strong> The local backend running on your hardware. It handles STT (Speech-to-Text), LLM generation, and TTS (Text-to-Speech).</li>
+                    <li><strong>Telegram Bridge:</strong> A native integration that allows you to interact with your Node via text or voice using Telegram on your phone.</li>
+                    <li><strong>Web Terminal:</strong> A cross-platform Godot WebGL interface for browser-based access to your Node.</li>
+                </ul>
+            `,
+            'install': `
+                <h1>Installation Guide</h1>
+                <p>Getting Voicy running on your local machine is straightforward. No complex compilation required for basic usage.</p>
+                <h2>Windows (.EXE)</h2>
+                <ul>
+                    <li>Download the latest <code>VoicyLauncher.exe</code> from our GitHub Releases page.</li>
+                    <li>Double-click the executable.</li>
+                    <li>The Godot-based UI will launch automatically and begin installing required Python environments into its sandboxed directory.</li>
+                </ul>
+                <h2>Linux (.AppImage)</h2>
+                <ul>
+                    <li>Download the Linux AppImage from the releases page.</li>
+                    <li>Mark it as executable: <code>chmod +x VoicyLauncher.AppImage</code></li>
+                    <li>Run it: <code>./VoicyLauncher.AppImage</code></li>
+                </ul>
+            `,
+            'account': `
+                <h1>Account & Sync</h1>
+                <p>By default, Voicy is 100% offline and local. However, for seamless syncing across multiple instances, you can link it to our Supabase cloud.</p>
+                <h2>Premium Cloud Sync</h2>
+                <p>Signing in via the Voicy website enables Google Authentication through Firebase/Supabase. This synchronizes your:</p>
+                <ul>
+                    <li>Environment variables (API Keys securely masked)</li>
+                    <li>ChromaDB Vector memory pointers</li>
+                    <li>Custom Agent workflows</li>
+                </ul>
+            `,
+            'backend': `
+                <h1>Local Backend (PC Lab)</h1>
+                <p>The core engine of your AI. This is what handles the heavy lifting.</p>
+                <h2>Starting up</h2>
+                <p>In the <strong>Services</strong> tab of your desktop launcher, click <strong>START</strong> next to the Local Backend. You will see the <span style="color: #4ade80">•</span> <strong>PC</strong> indicator turn green.</p>
+            `,
+            'telegram': `
+                <h1>Telegram Bot Bridge</h1>
+                <p>Talk to your home PC from anywhere in the world.</p>
+                <h2>Setup</h2>
+                <ul>
+                    <li>Message <strong>@BotFather</strong> on Telegram to create a new bot and copy the API Token.</li>
+                    <li>Open Voicy's <strong>ENV Manager</strong> and paste your token.</li>
+                    <li>Go to <strong>Services</strong> and start the Telegram Bot. The <span style="color: #4ade80">•</span> <strong>Bot</strong> indicator will go green!</li>
+                </ul>
+                <h2>Commands</h2>
+                <div class="code-block">/start - Initialize the connection
+/mode - Switch between Local (Ollama) and Cloud (Groq) models</div>
+            `
+        };
+
+        function loadContent(id) {
+            // Update Active link
+            document.querySelectorAll('.sidebar-link').forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Inject Content (fallback if missing)
+            const pane = document.getElementById('main-pane');
+            pane.classList.remove('animate-reveal'); // reset animation
+            void pane.offsetWidth; // trigger reflow
+
+            pane.innerHTML = contentData[id] || `
+                <h1>Under Construction</h1>
+                <p>This documentation section is currently being written. Check back later!</p>
+                <div class="alert-box">Review the roadmap to see our progress.</div>
+            `;
+            pane.classList.add('animate-reveal');
+        }
+
+        // Initialize first page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadContent('intro');
+        });
+    </script>
+</body>
+
+</html>

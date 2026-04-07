@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voicy | Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .roadmap-container {
+            max-width: 1000px;
+            margin: 120px auto 60px;
+            padding: 0 20px;
+        }
+
+        .roadmap-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .roadmap-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 15px;
+        }
+
+        .roadmap-header p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .status-section {
+            margin-bottom: 60px;
+        }
+
+        .status-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .status-header h2 {
+            font-weight: 600;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .badge-done {
+            background: rgba(16, 163, 127, 0.2);
+            color: #10a37f;
+        }
+
+        .badge-progress {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+
+        .badge-future {
+            background: rgba(139, 92, 246, 0.2);
+            color: #8b5cf6;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--text-dim);
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .feature-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+    <div class="stars-container"></div>
+
+    <nav class="chatgpt-nav">
+        <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">VOICY <span
+                class="accent-dot">.</span></a>
+        <div class="nav-right">
+            <a href="index.html" class="btn-minimal" style="text-decoration: none;">Home</a>
+            <a href="roadmap.html" class="btn-minimal"
+                style="text-decoration: none; font-weight: 800; color: var(--accent);">Roadmap</a>
+            <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">🌓</button>
+        </div>
+    </nav>
+
+    <main class="roadmap-container animate-reveal">
+        <div class="roadmap-header">
+            <h1>Feature <span class="gradient-text">Roadmap</span></h1>
+            <p>Our autonomous cycle of progress. See what we've shipped, what the Neural Link is processing right now,
+                and what's coming next.</p>
+        </div>
+
+        <section class="status-section">
+            <div class="status-header">
+                <h2>Completed</h2>
+                <span class="status-badge badge-done">Shipped</span>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>WebGL Web Terminal</h3>
+                    <p>Cross-platform Godot WebGL interface allowing you to chat with your local node directly from the
+                        browser anywhere.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Telegram Bridge</h3>
+                    <p>Native integration allowing seamless text and voice note interactions with your home PC via the
+                        Telegram bot architecture.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Fast Real-time Voice</h3>
+                    <p>Integration of Faster-Whisper for low-latency Speech-To-Text and Piper for high-quality, local
+                        Text-To-Speech.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Cloud Env Manager</h3>
+                    <p>Secure interface within the launcher to mask, inject, and manage API keys (Groq, OpenAI) and
+                        Telegram tokens without touching raw files.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="status-section animate-reveal delay-1">
+            <div class="status-header">
+                <h2>Current Focus</h2>
+                <span class="status-badge badge-progress">In Progress</span>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Godot / Python Parity</h3>
+                    <p>Achieving 100% feature parity between the Godot front-end application and the Python node manager
+                        background tasks.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Advanced Whisper Models</h3>
+                    <p>Implementing seamless switching to 'long' and 'heavy' Whisper models dynamically based on system
+                        hardware resources (RAM).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="status-section animate-reveal delay-2">
+            <div class="status-header">
+                <h2>Future Capabilities</h2>
+                <span class="status-badge badge-future">Planned</span>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Visual Agent Routing</h3>
+                    <p>A full UI to configure LangChain paths, allowing complex discussions between different
+                        specialized agents before responding.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>End-to-End Linux Verification</h3>
+                    <p>A robust testing suite guaranteeing flawless out-of-the-box execution of the entire AI/Godot
+                        Python stack on Linux distros.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Native Mobile Clients</h3>
+                    <p>Dedicated, optimized Android (AAB) and iOS applications wrapping the Godot frontend for maximum
+                        mobile performance.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="minimal-footer">
+        <p>&copy; 2026 VOICY / voicydroid.com</p>
+        <div class="footer-links">
+            <a href="https://github.com/megumi-joy/VoicyDroid" target="_blank">Github</a>
+            <a href="docs/index.html">Documentation</a>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
