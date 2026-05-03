@@ -109,9 +109,20 @@
             font-size: 1.2rem;
             cursor: pointer;
             transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .chat-input-bar button:disabled { opacity: 0.4; cursor: default; }
         .chat-input-bar button:hover:not(:disabled) { opacity: 0.85; }
+        #mic-btn { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+        #mic-btn.recording { background: #ff1744; color: #fff; animation: pulse 1.5s infinite; border-color: #ff1744; }
+        
+        .settings-btn { background: transparent; border: none; cursor: pointer; font-size: 1.2rem; padding: 0 10px; }
+        .settings-panel {
+            display: none; padding: 10px; background: var(--surface); border-radius: 8px; margin-bottom: 15px; border: 1px solid var(--border);
+        }
+        .settings-panel input { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg); color: var(--text); margin-top: 5px; }
         .typing-indicator {
             display: none;
             align-self: flex-start;
@@ -166,6 +177,7 @@
                 <span id="conn-status" class="status-dot"></span>
                 <span id="conn-label">Connecting...</span>
             </div>
+            <button id="settings-toggle" class="settings-btn" title="Settings">⚙️</button>
             <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">🌓</button>
         </div>
     </nav>
@@ -180,6 +192,11 @@
             </div>
         </div>
 
+        <div class="settings-panel" id="settings-panel">
+            <label style="font-size: 0.85rem; color: var(--text-dim);">API Endpoint (VPS or Local PC via ngrok)</label>
+            <input type="text" id="api-url" value="https://api.voicydroid.com">
+        </div>
+
         <div class="chat-messages" id="messages"></div>
 
         <div class="typing-indicator" id="typing">
@@ -188,24 +205,40 @@
 
         <div class="chat-input-bar">
             <input type="text" id="chat-input" placeholder="Message Voicy..." autocomplete="off">
-            <button id="send-btn" title="Send">↑</button>
+            <button id="mic-btn" title="Hold to record voice">🎤</button>
+            <button id="send-btn" title="Send text">↑</button>
         </div>
     </div>
 
     <div class="error-toast" id="error-toast"></div>
 
     <script>
-    const API = 'https://api.voicydroid.com';
+    let API = localStorage.getItem('voicy_api_url') || 'https://api.voicydroid.com';
     let sessionId = localStorage.getItem('voicy_session') || crypto.randomUUID();
     localStorage.setItem('voicy_session', sessionId);
 
     const messagesEl = document.getElementById('messages');
     const inputEl    = document.getElementById('chat-input');
     const sendBtn    = document.getElementById('send-btn');
+    const micBtn     = document.getElementById('mic-btn');
     const typingEl   = document.getElementById('typing');
     const connDot    = document.getElementById('conn-status');
     const connLabel  = document.getElementById('conn-label');
     const errorToast = document.getElementById('error-toast');
+    const settingsToggle = document.getElementById('settings-toggle');
+    const settingsPanel  = document.getElementById('settings-panel');
+    const apiUrlInput    = document.getElementById('api-url');
+    
+    apiUrlInput.value = API;
+    apiUrlInput.addEventListener('change', (e) => {
+        API = e.target.value.replace(/\/$/, "");
+        localStorage.setItem('voicy_api_url', API);
+        connectSSE();
+    });
+
+    settingsToggle.addEventListener('click', () => {
+        settingsPanel.style.display = settingsPanel.style.display === 'block' ? 'none' : 'block';
+    });
 
     // Theme
     const theme = localStorage.getItem('theme') || 'dark';
@@ -310,6 +343,82 @@
 
         sendBtn.disabled = false;
     }
+
+    // ── Voice Recording Logic ────────────────────────────────────────────────
+    let mediaRecorder;
+    let audioChunks = [];
+    let isRecording = false;
+
+    async function startRecording() {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            audioChunks = [];
+            
+            mediaRecorder.ondataavailable = e => { if (e.data.size > 0) audioChunks.push(e.data); };
+            
+            mediaRecorder.onstop = async () => {
+                const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                stream.getTracks().forEach(t => t.stop());
+                await sendVoice(audioBlob);
+            };
+            
+            mediaRecorder.start();
+            isRecording = true;
+            micBtn.classList.add('recording');
+        } catch (e) {
+            showError('Microphone access denied or not supported.');
+        }
+    }
+
+    function stopRecording() {
+        if (mediaRecorder && isRecording) {
+            mediaRecorder.stop();
+            isRecording = false;
+            micBtn.classList.remove('recording');
+        }
+    }
+
+    async function sendVoice(blob) {
+        typingEl.classList.add('active');
+        micBtn.disabled = true;
+        sendBtn.disabled = true;
+        
+        const formData = new FormData();
+        formData.append('file', blob, 'voice.webm');
+        formData.append('session_id', sessionId);
+        
+        try {
+            const resp = await fetch(`${API}/process_audio`, {
+                method: 'POST',
+                headers: { 'Authorization': 'Bearer user_web' },
+                body: formData
+            });
+            
+            if (!resp.ok) throw new Error('API Error');
+            const data = await resp.json();
+            
+            if (data.transcription) addMessage('user', data.transcription);
+            if (data.response) addMessage('assistant', data.response);
+            
+            if (data.audio_base64) {
+                const audio = new Audio("data:audio/wav;base64," + data.audio_base64);
+                audio.play();
+            }
+        } catch (e) {
+            showError('Failed to process audio.');
+        }
+        
+        typingEl.classList.remove('active');
+        micBtn.disabled = false;
+        sendBtn.disabled = false;
+    }
+
+    micBtn.addEventListener('mousedown', startRecording);
+    micBtn.addEventListener('mouseup', stopRecording);
+    micBtn.addEventListener('mouseleave', stopRecording);
+    micBtn.addEventListener('touchstart', (e) => { e.preventDefault(); startRecording(); });
+    micBtn.addEventListener('touchend', (e) => { e.preventDefault(); stopRecording(); });
 
     // ── Event Handlers ──────────────────────────────────────────────────────
     sendBtn.addEventListener('click', sendMessage);
