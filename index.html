@@ -12,10 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <!-- No external auth deps — session-based -->
 </head>
 
 <body data-theme="dark">
@@ -48,14 +45,14 @@
         <section class="hero-minimal">
             <h1 class="animate-reveal">How can I assist your <span class="gradient-text">Neural Link</span> today?</h1>
 
-            <div class="chat-box-mock animate-reveal delay-1">
-                <input type="text" placeholder="Message Voicy..." disabled>
-                <button class="send-btn">↑</button>
+            <div class="chat-box-mock animate-reveal delay-1" id="hero-chat">
+                <input type="text" id="hero-input" placeholder="Message Voicy..." autocomplete="off">
+                <button class="send-btn" id="hero-send">↑</button>
             </div>
 
             <div class="quick-actions animate-reveal delay-2">
                 <button onclick="window.location.href='docs/index.html'">Documentation</button>
-                <button onclick="window.location.href='demo/'">Try WebGL Terminal</button>
+                <button onclick="window.location.href='chat/'">💬 Open Chat</button>
                 <button
                     onclick="window.location.href='https://github.com/megumi-joy/VoicyDroidWebsite/releases/latest'">Download
                     PC
