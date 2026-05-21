@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#080810;--text:#e8e4dc;--accent:#d4a574;--dim:#6b6560;--panel:rgba(8,8,16,.94)}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow:hidden;height:100vh;user-select:none}
+
+/* === SCENE === */
+#scene{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg)}
+#scene img{max-width:100%;max-height:calc(100vh - 170px);object-fit:contain;opacity:0;transition:opacity 1s ease;position:absolute;top:0}
+#scene img.visible{opacity:1}
+
+/* === TEXTBOX === */
+#textbox{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(0deg,var(--panel),rgba(8,8,16,.8) 100%);padding:24px 48px 28px;min-height:160px;z-index:20;border-top:1px solid rgba(212,165,116,.12);backdrop-filter:blur(8px);cursor:pointer;transition:transform .4s}
+#textbox.hidden{transform:translateY(100%)}
+#speaker{font-family:'Playfair Display';font-size:16px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+#dialogue{font-size:17px;line-height:1.8;color:rgba(232,228,220,.9);font-weight:300;min-height:50px;max-width:900px}
+#dialogue .cur{display:inline-block;width:2px;height:17px;background:var(--accent);animation:blink 1s step-end infinite;vertical-align:text-bottom;margin-left:2px}
+@keyframes blink{50%{opacity:0}}
+
+/* === HUD === */
+#hud{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;z-index:30;background:linear-gradient(180deg,rgba(8,8,16,.65),transparent)}
+#hud-left{display:flex;align-items:center;gap:14px}
+#hud-right{display:flex;align-items:center;gap:8px}
+#journey-tag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,165,116,.55)}
+#counter{font-size:12px;color:var(--dim);letter-spacing:1px;margin-right:4px}
+.hbtn{width:38px;height:38px;border:1px solid rgba(212,165,116,.2);border-radius:8px;background:rgba(8,8,16,.4);color:var(--accent);font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;backdrop-filter:blur(6px)}
+.hbtn:hover{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.hbtn.on{background:rgba(212,165,116,.18);border-color:var(--accent)}
+#progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:40;transition:width .5s}
+
+/* === LANG PICKER (inline) === */
+#lang-pick{display:flex;gap:4px}
+#lang-pick button{padding:4px 8px;font-size:11px;font-weight:600;border:1px solid rgba(212,165,116,.15);border-radius:5px;background:transparent;color:var(--dim);cursor:pointer;transition:all .2s;font-family:'Inter'}
+#lang-pick button.active{color:var(--accent);border-color:var(--accent);background:rgba(212,165,116,.1)}
+#lang-pick button:hover{color:var(--accent)}
+
+/* === OVERLAYS (title, pause) === */
+.overlay{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--bg);transition:opacity .6s}
+.overlay.out{opacity:0;pointer-events:none}
+.overlay h1{font-family:'Playfair Display';font-size:clamp(44px,8vw,88px);font-weight:900;background:linear-gradient(135deg,#e8e4dc,#d4a574);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.overlay .sub{font-size:15px;color:rgba(232,228,220,.4);margin-bottom:36px;font-weight:300}
+.overlay .mbtn{display:block;width:260px;padding:14px 0;margin:6px auto;border:1px solid rgba(212,165,116,.25);border-radius:8px;background:transparent;color:var(--accent);font-size:14px;font-family:'Inter';font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.overlay .mbtn:hover{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.overlay .mbtn.dim{color:var(--dim);border-color:rgba(107,101,96,.2)}
+#pause-menu{background:rgba(8,8,16,.92);backdrop-filter:blur(12px)}
+#pause-menu h1{font-size:36px}
+
+/* === RESPONSIVE === */
+@media(max-width:700px){
+  #textbox{padding:16px 20px 20px;min-height:120px}
+  #dialogue{font-size:15px}
+  #scene img{max-height:calc(100vh - 130px)}
+}

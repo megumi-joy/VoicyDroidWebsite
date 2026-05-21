@@ -1,0 +1,665 @@
+[
+ {
+  "img": "art/01_дикие_концепты/wild_elektrichka_concept.png",
+  "who": {
+   "ru": "Поездка 1 · Исток",
+   "en": "Journey 1 · Origin",
+   "es": "Viaje 1 · Origen"
+  },
+  "text": {
+   "ru": "В мире, где природа и технологии сплелись воедино, существует Дикая Электричка — живой механизм, прокладывающий путь сквозь заросшие леса.",
+   "en": "In a world where nature and technology intertwined, there exists the Wild Elektrichka — a living mechanism carving its path through overgrown forests.",
+   "es": "En un mundo donde naturaleza y tecnología se entrelazaron, existe la Elektrichka Salvaje — un mecanismo vivo que se abre paso entre bosques.",
+   "ca": "En un món on natura i tecnologia es van entrellaçar, existeix l'Elektrichka Salvatge — un mecanisme viu.",
+   "fr": "Dans un monde où nature et technologie se sont entremêlées, existe l'Elektrichka Sauvage — un mécanisme vivant.",
+   "de": "In einer Welt, wo Natur und Technik verschmolzen, existiert die Wilde Elektritschka — ein lebender Mechanismus.",
+   "uk": "У світі, де природа й технології сплелися воєдино, існує Дика Електричка — живий механізм."
+  }
+ },
+ {
+  "img": "art/01_дикие_концепты/wild_electric_train.png",
+  "who": {
+   "ru": "Поездка 1 · Ржавое Депо",
+   "en": "Journey 1 · Rusty Depot",
+   "es": "Viaje 1 · Depósito Oxidado"
+  },
+  "text": {
+   "ru": "Место, где старые вагоны обретают новую жизнь. Электричка начала путь, обросшая мхом, лозами и дикой энергией.",
+   "en": "Where old carriages find new life. The train began its journey, covered in moss, vines, and wild energy.",
+   "es": "Donde los viejos vagones encuentran nueva vida. El tren comenzó su viaje cubierto de musgo y energía salvaje.",
+   "ca": "On els vells vagons troben nova vida. El tren va començar cobert de molsa i energia salvatge.",
+   "fr": "Où les vieux wagons trouvent une nouvelle vie. Le train a commencé couvert de mousse et d'énergie sauvage.",
+   "de": "Wo alte Waggons neues Leben finden. Der Zug begann seine Reise, bedeckt mit Moos und wilder Energie.",
+   "uk": "Місце, де старі вагони знаходять нове життя. Електричка почала шлях, обросла мохом і дикою енергією."
+  }
+ },
+ {
+  "img": "art/01_дикие_концепты/wild_train_v2.png",
+  "who": {
+   "ru": "Поездка 1",
+   "en": "Journey 1",
+   "es": "Viaje 1"
+  },
+  "text": {
+   "ru": "Каждый рейс меняет Электричку. Она обрастает мхом, теряет краску, но становится сильнее.",
+   "en": "Each trip transforms the train. It grows moss, loses paint, but grows stronger.",
+   "es": "Cada viaje transforma el tren. Crece musgo, pierde pintura, pero se fortalece.",
+   "ca": "Cada viatge transforma el tren. Creix molsa, perd pintura, però es fa més fort.",
+   "fr": "Chaque trajet transforme le train. Il gagne de la mousse, perd sa peinture, mais devient plus fort.",
+   "de": "Jede Fahrt verändert den Zug. Moos wächst, Farbe blättert, aber er wird stärker.",
+   "uk": "Кожен рейс змінює Електричку. Вона обростає мохом, втрачає фарбу, але стає сильнішою."
+  }
+ },
+ {
+  "img": "art/01_дикие_концепты/wild_train_new.png",
+  "who": {
+   "ru": "Поездка 1",
+   "en": "Journey 1",
+   "es": "Viaje 1"
+  },
+  "text": {
+   "ru": "На обратном пути Электричка выглядит иначе — обновлённая, но всё ещё дикая.",
+   "en": "On the way back the train looks different — renewed, but still wild.",
+   "es": "De vuelta el tren parece diferente — renovado, pero aún salvaje.",
+   "ca": "De tornada el tren sembla diferent — renovat, però encara salvatge.",
+   "fr": "Au retour le train a changé — renouvelé, mais toujours sauvage.",
+   "de": "Auf dem Rückweg sieht der Zug anders aus — erneuert, aber immer noch wild.",
+   "uk": "На зворотному шляху Електричка виглядає інакше — оновлена, але все ще дика."
+  }
+ },
+ {
+  "img": "art/01_дикие_концепты/restored_electric_train.png",
+  "who": {
+   "ru": "Поездка 1",
+   "en": "Journey 1",
+   "es": "Viaje 1"
+  },
+  "text": {
+   "ru": "Вариант будущего: чистая, отремонтированная, но с тем же характером. Дикость не стирается краской.",
+   "en": "A possible future: clean, repaired, but with the same character. Wildness cannot be painted over.",
+   "es": "Un futuro posible: limpio, reparado, pero con el mismo carácter.",
+   "ca": "Un futur possible: net, reparat, però amb el mateix caràcter.",
+   "fr": "Un futur possible : propre, réparé, mais avec le même caractère.",
+   "de": "Eine mögliche Zukunft: sauber, repariert, aber mit demselben Charakter.",
+   "uk": "Варіант майбутнього: чиста, відремонтована, але з тим самим характером."
+  }
+ },
+ {
+  "img": "art/02_станции_фантазия/subway_mushroom_station.png",
+  "who": {
+   "ru": "Станция «Споры»",
+   "en": "Spores Station",
+   "es": "Estación «Esporas»"
+  },
+  "text": {
+   "ru": "Биолюминесцентное подземелье. Грибница питается электричеством. Не выходи за жёлтую линию.",
+   "en": "A bioluminescent underground. The mycelium feeds on electricity. Don't cross the yellow line.",
+   "es": "Un subterráneo bioluminiscente. El micelio se alimenta de electricidad.",
+   "ca": "Un subterrani bioluminiscent. El miceli s'alimenta d'electricitat. No creueu la línia groga.",
+   "fr": "Un souterrain bioluminescent. Le mycélium se nourrit d'électricité. Ne franchissez pas la ligne jaune.",
+   "de": "Ein biolumineszentes Untergrund. Das Myzel nährt sich von Elektrizität. Nicht die gelbe Linie übertreten.",
+   "uk": "Біолюмінесцентне підземелля. Грибниця живиться електрикою. Не виходь за жовту лінію."
+  }
+ },
+ {
+  "img": "art/02_станции_фантазия/flooded_grand_station.png",
+  "who": {
+   "ru": "Затопленный Вокзал",
+   "en": "Flooded Station",
+   "es": "Estación Inundada"
+  },
+  "text": {
+   "ru": "Бывший Центральный Узел — теперь Великая Заводь. Вода — отличный проводник.",
+   "en": "The former Central Hub — now the Great Pool. Water is an excellent conductor.",
+   "es": "El antiguo Nudo Central — ahora la Gran Laguna. El agua es un excelente conductor.",
+   "ca": "L'antic Nus Central — ara la Gran Llacuna. L'aigua és un excel·lent conductor.",
+   "fr": "L'ancien Nœud Central — maintenant le Grand Bassin. L'eau est un excellent conducteur.",
+   "de": "Der ehemalige Zentralknoten — jetzt der Große Teich. Wasser ist ein ausgezeichneter Leiter.",
+   "uk": "Колишній Центральний Вузол — тепер Велика Заводь. Вода — чудовий провідник."
+  }
+ },
+ {
+  "img": "art/02_станции_фантазия/canopy_tree_station.png",
+  "who": {
+   "ru": "Крона Гигантов",
+   "en": "Giant Canopy",
+   "es": "Copa de Gigantes"
+  },
+  "text": {
+   "ru": "Поезд поднимается по спиральным деревянным путям. Деревья размером с небоскребы.",
+   "en": "The train climbs spiral wooden tracks. Trees the size of skyscrapers.",
+   "es": "El tren sube por vías espirales de madera. Árboles del tamaño de rascacielos.",
+   "ca": "El tren puja per vies espirals de fusta. Arbres de la mida de gratacels.",
+   "fr": "Le train monte par des voies en spirale de bois. Des arbres grands comme des gratte-ciel.",
+   "de": "Der Zug steigt auf spiralförmigen Holzgleisen. Bäume so groß wie Wolkenkratzer.",
+   "uk": "Поїзд піднімається спіральними дерев'яними коліями. Дерева розміром з хмарочоси."
+  }
+ },
+ {
+  "img": "art/02_станции_фантазия/mountain_viaduct.png",
+  "who": {
+   "ru": "Горный Виадук",
+   "en": "Mountain Viaduct",
+   "es": "Viaducto de Montaña"
+  },
+  "text": {
+   "ru": "Самый опасный участок. Каменный мост над пропастью. Гудок разносится эхом по ущелью.",
+   "en": "The most dangerous stretch. A stone bridge over the abyss. The whistle echoes through the gorge.",
+   "es": "El tramo más peligroso. Un puente de piedra sobre el abismo.",
+   "ca": "El tram més perillós. Un pont de pedra sobre l'abisme. El xiulet ressona per la gorja.",
+   "fr": "Le tronçon le plus dangereux. Un pont de pierre au-dessus de l'abîme. Le sifflet résonne dans la gorge.",
+   "de": "Der gefährlichste Abschnitt. Eine Steinbrücke über dem Abgrund. Die Pfeife hallt durch die Schlucht.",
+   "uk": "Найнебезпечніша ділянка. Кам'яний міст над прірвою. Гудок розноситься луною по ущелині."
+  }
+ },
+ {
+  "img": "art/02_станции_фантазия/hillside_station.png",
+  "who": {
+   "ru": "Станция на Склоне",
+   "en": "Hillside Station",
+   "es": "Estación en la Colina"
+  },
+  "text": {
+   "ru": "Забытая станция, врезанная в крутой холм. Единственная долгая остановка.",
+   "en": "A forgotten station cut into a steep hill. The only long stop.",
+   "es": "Una estación olvidada tallada en una colina empinada.",
+   "ca": "Una estació oblidada tallada en un turó escarpat. L'única parada llarga.",
+   "fr": "Une gare oubliée taillée dans une colline escarpée. Le seul long arrêt.",
+   "de": "Ein vergessener Bahnhof in einen steilen Hügel gehauen. Der einzige lange Halt.",
+   "uk": "Забута станція, врізана в крутий пагорб. Єдина довга зупинка."
+  }
+ },
+ {
+  "img": "art/02_станции_фантазия/seaside_town_train.png",
+  "who": {
+   "ru": "Приморский Терминал",
+   "en": "Seaside Terminal",
+   "es": "Terminal Marítima"
+  },
+  "text": {
+   "ru": "Конечная у океана. Рельсы уходят в песок. Электричка замирает, пока прилив не принесёт энергию.",
+   "en": "Terminal by the ocean. Rails disappear into sand. The train waits for the tide to bring energy.",
+   "es": "Terminal junto al océano. Los raíles desaparecen en la arena.",
+   "ca": "Terminal vora l'oceà. Els rails desapareixen a la sorra.",
+   "fr": "Terminal au bord de l'océan. Les rails disparaissent dans le sable.",
+   "de": "Endstation am Ozean. Die Gleise verschwinden im Sand.",
+   "uk": "Кінцева біля океану. Рейки зникають у піску."
+  }
+ },
+ {
+  "img": "art/01_дикие_концепты/wild_banana.png",
+  "who": {
+   "ru": "Бонус",
+   "en": "Bonus",
+   "es": "Extra"
+  },
+  "text": {
+   "ru": "Дикий Банан — попутчик из параллельного мира.",
+   "en": "The Wild Banana — a fellow traveler from a parallel world.",
+   "es": "El Plátano Salvaje — un compañero de viaje de un mundo paralelo.",
+   "ca": "El Plàtan Salvatge — un company de viatge d'un món paral·lel.",
+   "fr": "La Banane Sauvage — un compagnon de voyage d'un monde parallèle.",
+   "de": "Die Wilde Banane — ein Mitreisender aus einer Parallelwelt.",
+   "uk": "Дикий Банан — попутник з паралельного світу."
+  }
+ },
+ {
+  "img": "art/01_дикие_концепты/wild_cucumber.png",
+  "who": {
+   "ru": "Бонус",
+   "en": "Bonus",
+   "es": "Extra"
+  },
+  "text": {
+   "ru": "Дикий Огурец. Неизвестно, куда он едет.",
+   "en": "The Wild Cucumber. Nobody knows where it's going.",
+   "es": "El Pepino Salvaje. Nadie sabe adónde va.",
+   "ca": "El Cogombre Salvatge. Ningú sap on va.",
+   "fr": "Le Concombre Sauvage. Personne ne sait où il va.",
+   "de": "Die Wilde Gurke. Niemand weiß, wohin sie fährt.",
+   "uk": "Дикий Огірок. Невідомо, куди він їде."
+  }
+ },
+ {
+  "img": "art/03_маршрут_испания/seaside_town_almeria.png",
+  "who": {
+   "ru": "Поездка 2 · Альмерия",
+   "en": "Journey 2 · Almería",
+   "es": "Viaje 2 · Almería"
+  },
+  "text": {
+   "ru": "Рельсы уходят прямо в воду. Только шум волн и крик чаек. Электричка стоит с открытыми дверями.",
+   "en": "Rails go straight into the water. Only the sound of waves and seagulls. The train waits with open doors.",
+   "es": "Los raíles se adentran en el agua. Solo el sonido de las olas. El tren espera con puertas abiertas.",
+   "ca": "Els rails s'endinsen a l'aigua. Només ones i gavines. El tren espera amb portes obertes.",
+   "fr": "Les rails s'enfoncent dans l'eau. Seulement des vagues et des mouettes. Le train attend portes ouvertes.",
+   "de": "Die Gleise führen ins Wasser. Nur Wellen und Möwen. Der Zug wartet mit offenen Türen.",
+   "uk": "Рейки йдуть прямо у воду. Тільки хвилі й чайки. Електричка стоїть з відчиненими дверима."
+  }
+ },
+ {
+  "img": "art/03_маршрут_испания/cordoba_mezquita_station.png",
+  "who": {
+   "ru": "Кордоба-Мескита",
+   "en": "Córdoba-Mezquita",
+   "es": "Córdoba-Mezquita"
+  },
+  "text": {
+   "ru": "Рельсы через бесконечные красно-белые арки. Плющ, полевые цветы, свет сквозь розетки.",
+   "en": "Rails through endless red-white arches. Ivy, wildflowers, light through rosettes.",
+   "es": "Raíles entre arcos rojos y blancos infinitos. Hiedra, flores silvestres, luz por las rosetas.",
+   "ca": "Rails entre arcs vermells i blancs infinits. Heura, flors silvestres, llum per les rosetes.",
+   "fr": "Rails à travers des arcs rouges et blancs infinis. Lierre, fleurs sauvages, lumière par les rosaces.",
+   "de": "Gleise durch endlose rot-weiße Bögen. Efeu, Wildblumen, Licht durch Rosetten.",
+   "uk": "Рейки крізь нескінченні червоно-білі арки. Плющ, польові квіти, світло крізь розетки."
+  }
+ },
+ {
+  "img": "art/03_маршрут_испания/sevilla_station.png",
+  "who": {
+   "ru": "Севилья",
+   "en": "Seville",
+   "es": "Sevilla"
+  },
+  "text": {
+   "ru": "Закат. Бугенвиллии и апельсины. Первый живой человек за всю дорогу сидит на скамейке.",
+   "en": "Sunset. Bougainvillea and oranges. The first living person on the whole journey sits on a bench.",
+   "es": "Atardecer. Buganvillas y naranjos. La primera persona viva en todo el viaje.",
+   "ca": "Capvespre. Buganvíllies i tarongers. La primera persona viva en tot el viatge.",
+   "fr": "Crépuscule. Bougainvilliers et orangers. La première personne vivante de tout le voyage.",
+   "de": "Sonnenuntergang. Bougainvillea und Orangenbäume. Der erste lebende Mensch auf der ganzen Reise.",
+   "uk": "Захід сонця. Бугенвілії та апельсинові дерева. Перша жива людина за всю дорогу."
+  }
+ },
+ {
+  "img": "art/03_маршрут_испания/despe_aperros_gorge.png",
+  "who": {
+   "ru": "Деспеньяперрос",
+   "en": "Despeñaperros",
+   "es": "Despeñaperros"
+  },
+  "text": {
+   "ru": "Ущелье Сьерра-Морены. Виадук над пропастью. Дождь хлещет по окнам.",
+   "en": "Sierra Morena gorge. Viaduct over the abyss. Rain lashes the windows.",
+   "es": "Desfiladero de Sierra Morena. Viaducto sobre el abismo. La lluvia azota las ventanas.",
+   "ca": "Congost de Sierra Morena. Viaducte sobre l'abisme. La pluja fueteja les finestres.",
+   "fr": "Gorge de Sierra Morena. Viaduc au-dessus de l'abîme. La pluie fouette les vitres.",
+   "de": "Schlucht der Sierra Morena. Viadukt über dem Abgrund. Regen peitscht gegen die Fenster.",
+   "uk": "Ущелина Сьєрра-Морени. Віадук над прірвою. Дощ б'є по вікнах."
+  }
+ },
+ {
+  "img": "art/03_маршрут_испания/castilla_meseta.png",
+  "who": {
+   "ru": "Кастилья-Ла-Манча",
+   "en": "Castilla-La Mancha",
+   "es": "Castilla-La Mancha"
+  },
+  "text": {
+   "ru": "Бескрайняя золотая равнина. Одинокая мельница. Герой засыпает под стук колёс.",
+   "en": "Endless golden plains. A lone windmill. The hero falls asleep to the rhythm of the wheels.",
+   "es": "Llanura dorada infinita. Un molino solitario. El héroe se duerme al ritmo de las ruedas.",
+   "ca": "Plana daurada infinita. Un molí solitari. L'heroi s'adorm al ritme de les rodes.",
+   "fr": "Plaine dorée infinie. Un moulin solitaire. Le héros s'endort au rythme des roues.",
+   "de": "Endlose goldene Ebene. Eine einsame Windmühle. Der Held schläft zum Rhythmus der Räder ein.",
+   "uk": "Безкрайня золота рівнина. Самотній млин. Герой засинає під стукіт коліс."
+  }
+ },
+ {
+  "img": "art/03_маршрут_испания/chamartin_madrid.png",
+  "who": {
+   "ru": "Мадрид-Чамартин",
+   "en": "Madrid-Chamartín",
+   "es": "Madrid-Chamartín"
+  },
+  "text": {
+   "ru": "Станция работает! Чистые платформы, табло с расписанием. Электричка уезжает обратно забирать следующего.",
+   "en": "The station works! Clean platforms, timetable displays. The train leaves back to collect the next one.",
+   "es": "¡La estación funciona! Andenes limpios, paneles de horarios. El tren vuelve a buscar al siguiente.",
+   "ca": "L'estació funciona! Andanes netes, panells d'horaris. El tren torna a buscar el següent.",
+   "fr": "La gare fonctionne ! Quais propres, panneaux d'horaires. Le train repart chercher le suivant.",
+   "de": "Der Bahnhof funktioniert! Saubere Bahnsteige, Fahrplananzeigen. Der Zug fährt zurück.",
+   "uk": "Станція працює! Чисті платформи, табло з розкладом. Електричка їде назад забирати наступного."
+  }
+ },
+ {
+  "img": "art/04_баклажан/wild_eggplant_train.png",
+  "who": {
+   "ru": "Побочная линия",
+   "en": "Side Line",
+   "es": "Línea Secundaria"
+  },
+  "text": {
+   "ru": "Nightshade Express — Дикий Баклажан. Второй поезд, сросшийся с локомотивом.",
+   "en": "Nightshade Express — The Wild Eggplant. A second train, fused with the locomotive.",
+   "es": "Nightshade Express — La Berenjena Salvaje. Un segundo tren fusionado con la locomotora.",
+   "ca": "Nightshade Express — L'Albergínia Salvatge. Un segon tren fusionat amb la locomotora.",
+   "fr": "Nightshade Express — L'Aubergine Sauvage. Un second train fusionné avec la locomotive.",
+   "de": "Nightshade Express — Die Wilde Aubergine. Ein zweiter Zug, verschmolzen mit der Lokomotive.",
+   "uk": "Nightshade Express — Дикий Баклажан. Другий потяг, зрощений з локомотивом."
+  }
+ },
+ {
+  "img": "art/04_баклажан/eggplant_night_station.png",
+  "who": {
+   "ru": "Побочная линия",
+   "en": "Side Line",
+   "es": "Línea Secundaria"
+  },
+  "text": {
+   "ru": "Gare de l'Aubergine. Заброшенная станция ар-нуво. Баклажан прибывает на второй путь.",
+   "en": "Gare de l'Aubergine. An abandoned Art Nouveau station. The eggplant arrives on track two.",
+   "es": "Gare de l'Aubergine. Estación abandonada de Art Nouveau. La berenjena llega a la vía dos.",
+   "ca": "Gare de l'Aubergine. Estació abandonada d'Art Nouveau. L'albergínia arriba a la via dos.",
+   "fr": "Gare de l'Aubergine. Gare abandonnée Art Nouveau. L'aubergine arrive voie deux.",
+   "de": "Gare de l'Aubergine. Verlassener Jugendstil-Bahnhof. Die Aubergine kommt auf Gleis zwei.",
+   "uk": "Gare de l'Aubergine. Занедбана станція ар-нуво. Баклажан прибуває на другу колію."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/01_jaen_olive_station.png",
+  "who": {
+   "ru": "Поездка 3 · Хаэн",
+   "en": "Journey 3 · Jaén",
+   "es": "Viaje 3 · Jaén"
+  },
+  "text": {
+   "ru": "Бесконечные оливковые рощи. Замок Санта-Каталина на холме. Воздух гудит от цикад.",
+   "en": "Endless olive groves. Castle of Santa Catalina on the hill. The air hums with cicadas.",
+   "es": "Olivares infinitos. El Castillo de Santa Catalina en la colina. El aire zumba con cigarras.",
+   "ca": "Oliveres infinites. Castell de Santa Catalina al turó. L'aire brunzeix amb cigales.",
+   "fr": "Oliviers infinis. Château de Santa Catalina sur la colline. L'air bourdonne de cigales.",
+   "de": "Endlose Olivenhaine. Burg Santa Catalina auf dem Hügel. Die Luft summt vor Zikaden.",
+   "uk": "Нескінченні оливкові гаї. Замок Санта-Каталіна на пагорбі. Повітря гуде від цикад."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/02_granada_alhambra_station.png",
+  "who": {
+   "ru": "Гранада",
+   "en": "Granada",
+   "es": "Granada"
+  },
+  "text": {
+   "ru": "Гранатовые деревья, жасмин. Альгамбра на холме, Сьерра-Невада за ней. «GRANADA 1999 · LOST».",
+   "en": "Pomegranate trees, jasmine. The Alhambra on the hill, Sierra Nevada behind it.",
+   "es": "Granados, jazmín. La Alhambra en la colina, Sierra Nevada detrás.",
+   "ca": "Magraners, gessamí. L'Alhambra al turó, Sierra Nevada al darrere.",
+   "fr": "Grenadiers, jasmin. L'Alhambra sur la colline, Sierra Nevada derrière.",
+   "de": "Granatapfelbäume, Jasmin. Die Alhambra auf dem Hügel, Sierra Nevada dahinter.",
+   "uk": "Гранатові дерева, жасмин. Альгамбра на пагорбі, Сьєрра-Невада позаду."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/03_tabernas_desert_station.png",
+  "who": {
+   "ru": "Табернас",
+   "en": "Tabernas",
+   "es": "Tabernas"
+  },
+  "text": {
+   "ru": "Единственная пустыня Европы. Станция в стиле вестерна. Ветер свистит в проводах.",
+   "en": "Europe's only desert. A spaghetti-western style station. Wind whistles through the wires.",
+   "es": "El único desierto de Europa. Estación estilo western. El viento silba en los cables.",
+   "ca": "L'únic desert d'Europa. Estació estil western. El vent xiula als cables.",
+   "fr": "Le seul désert d'Europe. Gare style western. Le vent siffle dans les câbles.",
+   "de": "Europas einzige Wüste. Bahnhof im Western-Stil. Der Wind pfeift durch die Drähte.",
+   "uk": "Єдина пустеля Європи. Станція у стилі вестерну. Вітер свистить у проводах."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/04_murcia_huerta_station.png",
+  "who": {
+   "ru": "Мурсия",
+   "en": "Murcia",
+   "es": "Murcia"
+  },
+  "text": {
+   "ru": "Поля лимонных деревьев. Мавританские каналы-асекии. Станция пахнет цитрусовыми.",
+   "en": "Lemon tree fields. Moorish irrigation channels. The station smells of citrus.",
+   "es": "Campos de limoneros. Acequias árabes. La estación huele a cítricos.",
+   "ca": "Camps de llimoners. Séquies àrabs. L'estació fa olor de cítrics.",
+   "fr": "Champs de citronniers. Canaux d'irrigation arabes. La gare sent les agrumes.",
+   "de": "Zitronenbaumfelder. Maurische Bewässerungskanäle. Der Bahnhof riecht nach Zitrusfrüchten.",
+   "uk": "Поля лимонних дерев. Мавританські канали-асекії. Станція пахне цитрусовими."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/05_cartagena_port_station.png",
+  "who": {
+   "ru": "Картахена",
+   "en": "Cartagena",
+   "es": "Cartagena"
+  },
+  "text": {
+   "ru": "Древний порт. Римский амфитеатр. Подводная лодка у причала. «Fundada 227 a.C.»",
+   "en": "Ancient port. Roman amphitheater. A submarine at the dock. 'Founded 227 BC.'",
+   "es": "Puerto antiguo. Anfiteatro romano. Un submarino en el muelle. «Fundada 227 a.C.»",
+   "ca": "Port antic. Amfiteatre romà. Un submarí al moll. «Fundada 227 a.C.»",
+   "fr": "Port antique. Amphithéâtre romain. Un sous-marin au quai. « Fondé en 227 av. J.-C. »",
+   "de": "Antiker Hafen. Römisches Amphitheater. Ein U-Boot am Kai. «Gegründet 227 v. Chr.»",
+   "uk": "Давній порт. Римський амфітеатр. Підводний човен біля причалу. «Засновано 227 до н.е.»"
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/06_elche_palmeral_station.png",
+  "who": {
+   "ru": "Эльче",
+   "en": "Elche",
+   "es": "Elche"
+  },
+  "text": {
+   "ru": "Крупнейший пальмовый лес Европы, ЮНЕСКО. Поезд почти не виден среди стволов.",
+   "en": "Europe's largest palm forest, UNESCO site. The train is barely visible among the trunks.",
+   "es": "El mayor palmeral de Europa, Patrimonio UNESCO. El tren apenas se ve entre los troncos.",
+   "ca": "El major palmerar d'Europa, Patrimoni UNESCO. El tren quasi no es veu entre els troncs.",
+   "fr": "La plus grande palmeraie d'Europe, patrimoine UNESCO. Le train est à peine visible parmi les troncs.",
+   "de": "Europas größter Palmenhain, UNESCO-Welterbe. Der Zug ist kaum sichtbar zwischen den Stämmen.",
+   "uk": "Найбільший пальмовий ліс Європи, об'єкт ЮНЕСКО. Потяг ледь видно серед стовбурів."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/07_alicante_station.png",
+  "who": {
+   "ru": "Аликанте",
+   "en": "Alicante",
+   "es": "Alicante"
+  },
+  "text": {
+   "ru": "Ар-деко. Бугенвиллии. Замок на скале. Попутчица: «Не все станции безопасные.»",
+   "en": "Art Deco. Bougainvillea. Castle on the cliff. Companion: 'Not all stations are safe.'",
+   "es": "Art Déco. Buganvillas. Castillo en el acantilado. Compañera: «No todas las estaciones son seguras.»",
+   "ca": "Art Déco. Buganvíllies. Castell al penya-segat. Companya: «No totes les estacions són segures.»",
+   "fr": "Art Déco. Bougainvilliers. Château sur la falaise. Compagne : « Toutes les gares ne sont pas sûres. »",
+   "de": "Art Déco. Bougainvillea. Burg auf der Klippe. Begleiterin: «Nicht alle Bahnhöfe sind sicher.»",
+   "uk": "Ар-деко. Бугенвілії. Замок на скелі. Попутниця: «Не всі станції безпечні.»"
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/08_coastal_benidorm_station.png",
+  "who": {
+   "ru": "Побережье",
+   "en": "Coast",
+   "es": "Costa"
+  },
+  "text": {
+   "ru": "Рыбацкие деревушки и бирюзовые бухты внизу. Заброшенные небоскрёбы Бенидорма вверху.",
+   "en": "Fishing villages and turquoise coves below. Abandoned Benidorm skyscrapers above.",
+   "es": "Pueblos pesqueros y calas turquesas abajo. Rascacielos abandonados de Benidorm arriba.",
+   "ca": "Pobles pescadors i cales turqueses a baix. Gratacels abandonats de Benidorm a dalt.",
+   "fr": "Villages de pêcheurs et criques turquoise en bas. Gratte-ciel abandonnés de Benidorm en haut.",
+   "de": "Fischerdörfer und türkise Buchten unten. Verlassene Wolkenkratzer von Benidorm oben.",
+   "uk": "Рибальські села й бірюзові бухти внизу. Занедбані хмарочоси Бенідорму вгорі."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/09_night_coastal_station.png",
+  "who": {
+   "ru": "Ночная Станция",
+   "en": "Night Station",
+   "es": "Estación Nocturna"
+  },
+  "text": {
+   "ru": "Млечный Путь. Маяк. Биолюминесцентный планктон. Самый тихий момент путешествия.",
+   "en": "The Milky Way. A lighthouse. Bioluminescent plankton. The quietest moment of the journey.",
+   "es": "La Vía Láctea. Un faro. Plancton bioluminiscente. El momento más silencioso del viaje.",
+   "ca": "La Via Làctia. Un far. Plàncton bioluminiscent. El moment més silenciós del viatge.",
+   "fr": "La Voie Lactée. Un phare. Plancton bioluminescent. Le moment le plus silencieux du voyage.",
+   "de": "Die Milchstraße. Ein Leuchtturm. Biolumineszentes Plankton. Der stillste Moment der Reise.",
+   "uk": "Чумацький Шлях. Маяк. Біолюмінесцентний планктон. Найтихіший момент подорожі."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/10_albufera_rice_station.png",
+  "who": {
+   "ru": "Альбуфера",
+   "en": "Albufera",
+   "es": "Albufera"
+  },
+  "text": {
+   "ru": "Рассвет. Рисовые поля отражают небо как зеркала. Фламинго и цапли в мелкой воде.",
+   "en": "Dawn. Rice paddies reflect the sky like mirrors. Flamingos and herons in shallow water.",
+   "es": "Amanecer. Los arrozales reflejan el cielo como espejos. Flamencos y garzas en aguas someras.",
+   "ca": "Alba. Els arrossars reflecteixen el cel com miralls. Flamencs i bernats a l'aigua.",
+   "fr": "Aube. Les rizières reflètent le ciel comme des miroirs. Flamants et hérons dans l'eau.",
+   "de": "Morgendämmerung. Reisfelder spiegeln den Himmel wie Spiegel. Flamingos und Reiher im Wasser.",
+   "uk": "Світанок. Рисові поля відбивають небо як дзеркала. Фламінго й чаплі в мілкій воді."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/11_valencia_station.png",
+  "who": {
+   "ru": "Валенсия",
+   "en": "Valencia",
+   "es": "València"
+  },
+  "text": {
+   "ru": "Estación del Nord. Керамические панно с апельсинами. Город Искусств сквозь разбитые окна.",
+   "en": "Estación del Nord. Ceramic panels with oranges. The City of Arts through broken windows.",
+   "es": "Estació del Nord. Paneles cerámicos con naranjas. La Ciudad de las Artes tras cristales rotos.",
+   "ca": "Estació del Nord. Panells ceràmics amb taronges. La Ciutat de les Arts entre vidres trencats.",
+   "fr": "Estación del Nord. Panneaux céramiques avec des oranges. La Cité des Arts derrière les vitres brisées.",
+   "de": "Estación del Nord. Keramiktafeln mit Orangen. Die Stadt der Künste durch zerbrochene Fenster.",
+   "uk": "Estación del Nord. Керамічні панно з апельсинами. Місто Мистецтв крізь розбите скло."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/13_sagunto_castle_station.png",
+  "who": {
+   "ru": "Сагунто",
+   "en": "Sagunto",
+   "es": "Sagunt"
+  },
+  "text": {
+   "ru": "Замок на всём горном хребте — иберийский, римский, мавританский. «SAGUNTO / SAGUNT».",
+   "en": "Castle spanning the ridge — Iberian, Roman, Moorish. 'SAGUNTO / SAGUNT.'",
+   "es": "Castillo a lo largo de la sierra — ibero, romano, árabe. «SAGUNTO / SAGUNT».",
+   "ca": "Castell al llarg de la serra — iber, romà, àrab. «SAGUNTO / SAGUNT».",
+   "fr": "Château le long de la sierra — ibère, romain, arabe. « SAGUNTO / SAGUNT ».",
+   "de": "Burg entlang des Bergrückens — iberisch, römisch, maurisch. «SAGUNTO / SAGUNT».",
+   "uk": "Замок вздовж хребта — іберійський, римський, мавританський. «SAGUNTO / SAGUNT»."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/12_castellon_ceramic_station.png",
+  "who": {
+   "ru": "Кастельон",
+   "en": "Castellón",
+   "es": "Castelló"
+  },
+  "text": {
+   "ru": "Азулехос на каждой поверхности. Осколки плитки — мозаика на полу.",
+   "en": "Azulejos on every surface. Tile fragments form a mosaic on the floor.",
+   "es": "Azulejos en cada superficie. Fragmentos de cerámica forman un mosaico en el suelo.",
+   "ca": "Rajoles a cada superfície. Fragments de ceràmica formen un mosaic al terra.",
+   "fr": "Azulejos sur chaque surface. Des fragments de céramique forment une mosaïque au sol.",
+   "de": "Azulejos auf jeder Oberfläche. Keramikfragmente bilden ein Mosaik auf dem Boden.",
+   "uk": "Азулехос на кожній поверхні. Уламки плитки утворюють мозаїку на підлозі."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/14_teruel_mudejar_station.png",
+  "who": {
+   "ru": "Теруэль",
+   "en": "Teruel",
+   "es": "Teruel"
+  },
+  "text": {
+   "ru": "Самый забытый город Испании. Мудехарские башни. Снег. Из +35° в -5°.",
+   "en": "Spain's most forgotten city. Mudéjar towers. Snow. From +35°C to -5°C.",
+   "es": "La ciudad más olvidada de España. Torres mudéjares. Nieve. De +35° a -5°.",
+   "ca": "La ciutat més oblidada d'Espanya. Torres mudèjars. Neu. De +35° a -5°.",
+   "fr": "La ville la plus oubliée d'Espagne. Tours mudéjares. Neige. De +35° à -5°.",
+   "de": "Spaniens vergessenste Stadt. Mudéjar-Türme. Schnee. Von +35° auf -5°.",
+   "uk": "Найзабутіше місто Іспанії. Мудехарські вежі. Сніг. З +35° до -5°."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/15_zaragoza_station.png",
+  "who": {
+   "ru": "Сарагоса",
+   "en": "Zaragoza",
+   "es": "Zaragoza"
+  },
+  "text": {
+   "ru": "Базилика Пилар через реку. Эбро затопил платформы. «Осталось две остановки.»",
+   "en": "Basílica del Pilar across the river. The Ebro has flooded the platforms. 'Two stops left.'",
+   "es": "La Basílica del Pilar al otro lado del río. El Ebro ha inundado los andenes. «Quedan dos paradas.»",
+   "ca": "La Basílica del Pilar a l'altra riba. L'Ebre ha inundat els andans. «Queden dues parades.»",
+   "fr": "La Basilique du Pilar de l'autre côté. L'Èbre a inondé les quais. « Il reste deux arrêts. »",
+   "de": "Basílica del Pilar am anderen Ufer. Der Ebro hat die Bahnsteige überflutet. «Noch zwei Halte.»",
+   "uk": "Базиліка Пілар через річку. Ебро затопив платформи. «Залишилось дві зупинки.»"
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/16_monegros_steppe_station.png",
+  "who": {
+   "ru": "Монегрос",
+   "en": "Monegros",
+   "es": "Monegros"
+  },
+  "text": {
+   "ru": "Рельсы по прямой через арагонскую степь. Солончаки, ветряки. Это даже не станция.",
+   "en": "Tracks dead straight through the Aragonese steppe. Salt flats, wind turbines. Not even a station.",
+   "es": "Vías rectas por la estepa aragonesa. Salinas, molinos. Ni siquiera es una estación.",
+   "ca": "Vies rectes per l'estepa aragonesa. Salines, molins de vent. Ni tan sols és una estació.",
+   "fr": "Voies droites à travers la steppe aragonaise. Salines, éoliennes. Ce n'est même pas une gare.",
+   "de": "Schnurgerade Gleise durch die aragonesische Steppe. Salzpfannen, Windräder. Nicht mal ein Bahnhof.",
+   "uk": "Рейки навпростець через арагонський степ. Солончаки, вітряки. Це навіть не станція."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/17_tarragona_roman_station.png",
+  "who": {
+   "ru": "Таррагона",
+   "en": "Tarragona",
+   "es": "Tarragona"
+  },
+  "text": {
+   "ru": "Римский акведук над путями. Амфитеатр, за ним — море. Камню 2000 лет, электричке — 40.",
+   "en": "Roman aqueduct over the tracks. Amphitheater, then the sea. The stone: 2000 years. The train: 40.",
+   "es": "Acueducto romano sobre las vías. Anfiteatro, y detrás el mar. La piedra: 2000 años. El tren: 40.",
+   "ca": "Aqüeducte romà sobre les vies. Amfiteatre, i darrere el mar. La pedra: 2000 anys. El tren: 40.",
+   "fr": "Aqueduc romain au-dessus des voies. Amphithéâtre, puis la mer. La pierre : 2000 ans. Le train : 40.",
+   "de": "Römisches Aquädukt über den Gleisen. Amphitheater, dahinter das Meer. Der Stein: 2000 Jahre. Der Zug: 40.",
+   "uk": "Римський акведук над коліями. Амфітеатр, за ним — море. Каменю 2000 років, електричці — 40."
+  }
+ },
+ {
+  "img": "art/05_маршрут_левант/18_barcelona_franca_station.png",
+  "who": {
+   "ru": "Барселона — Конечная",
+   "en": "Barcelona — Terminal",
+   "es": "Barcelona — Terminal"
+  },
+  "text": {
+   "ru": "Закат. Свод Estació de França. Саграда Фамилия в оранжевом небе. «Ты останешься?»",
+   "en": "Sunset. The vault of Estació de França. Sagrada Família in the orange sky. 'Will you stay?'",
+   "es": "Atardecer. La bóveda de Estació de França. La Sagrada Familia en el cielo naranja. «¿Te quedas?»",
+   "ca": "Capvespre. La volta de l'Estació de França. La Sagrada Família al cel taronja. «Et quedes?»",
+   "fr": "Crépuscule. La voûte de l'Estació de França. La Sagrada Família dans le ciel orange. « Tu restes ? »",
+   "de": "Sonnenuntergang. Das Gewölbe der Estació de França. Die Sagrada Família im orangenen Himmel. «Bleibst du?»",
+   "uk": "Захід сонця. Склепіння Estació de França. Саґрада Фамілія в оранжевому небі. «Ти залишишся?»"
+  }
+ }
+]

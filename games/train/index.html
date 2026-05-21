@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Электричка — Визуальная Новелла</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- Title Screen -->
+<div class="overlay" id="title-screen">
+  <h1 id="ts-title">Электричка</h1>
+  <p class="sub" id="ts-sub">Визуальная Новелла · Три Поездки</p>
+  <div id="ts-lang" style="margin-bottom:24px;display:flex;gap:4px;justify-content:center"></div>
+  <button class="mbtn" id="ts-start" onclick="E.startGame()">Начать Путь</button>
+  <button class="mbtn dim" id="ts-new" onclick="E.newGame()">Новая Игра</button>
+</div>
+<!-- Pause Menu -->
+<div class="overlay out" id="pause-menu">
+  <h1 id="pm-title">Пауза</h1>
+  <p class="sub" id="pm-progress"></p>
+  <button class="mbtn" id="pm-resume" onclick="E.togglePause()">Продолжить</button>
+  <button class="mbtn" id="pm-voice" onclick="E.pauseToggleVoice()">Озвучка</button>
+  <button class="mbtn dim" id="pm-menu" onclick="E.backToMenu()">В Меню</button>
+</div>
+<!-- HUD -->
+<div id="progress-bar"></div>
+<div id="hud" style="display:none">
+  <div id="hud-left"><span id="journey-tag"></span></div>
+  <div id="hud-right">
+    <div id="hud-lang" style="display:flex;gap:4px"></div>
+    <span id="counter"></span>
+    <button class="hbtn" id="voice-btn" onclick="E.toggleVoice()">🔇</button>
+    <button class="hbtn" onclick="E.go(-1)">‹</button>
+    <button class="hbtn" onclick="E.advance()">›</button>
+    <button class="hbtn" onclick="E.togglePause()">☰</button>
+  </div>
+</div>
+<!-- Scene + Textbox -->
+<div id="scene"></div>
+<div id="textbox" class="hidden" onclick="E.advance()">
+  <div id="speaker"></div>
+  <div id="dialogue"></div>
+</div>
+
+<script type="module">
+import * as engine from './js/engine.js';
+window.E = engine;
+engine.init();
+</script>
+</body>
+</html>
