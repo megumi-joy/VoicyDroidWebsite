@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Algo Trading Sandbox | ABAF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --panel-bg: rgba(20, 25, 40, 0.6);
+            --border-color: rgba(60, 70, 100, 0.4);
+            --accent: #00d2ff;
+            --accent-glow: rgba(0, 210, 255, 0.3);
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --profit: #10b981;
+            --loss: #ef4444;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: radial-gradient(circle at top right, #1a233a 0%, var(--bg-color) 70%);
+        }
+
+        header {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .logo { font-weight: 800; font-size: 1.2rem; color: var(--accent); letter-spacing: 1px; }
+        .logo span { color: var(--text-main); }
+        
+        .header-stats { display: flex; gap: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+        .stat span { color: var(--text-muted); font-size: 0.8rem; margin-right: 0.5rem; }
+        
+        .buy-vps-btn {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+        .buy-vps-btn:hover { background: var(--accent); color: var(--bg-color); }
+
+        main {
+            display: grid;
+            grid-template-columns: 300px 1fr 400px;
+            grid-template-rows: 1fr 300px;
+            gap: 1rem;
+            padding: 1rem;
+            height: calc(100vh - 60px);
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Bot Config Panel */
+        .config-panel { grid-row: 1 / 3; grid-column: 1 / 2; padding: 1rem; overflow-y: auto; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
+        .form-control {
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        select.form-control { appearance: none; }
+        
+        .code-editor {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            resize: vertical;
+            min-height: 200px;
+        }
+
+        /* Chart Panel */
+        .chart-panel { grid-row: 1 / 2; grid-column: 2 / 3; }
+        .chart-container { flex: 1; display: flex; align-items: center; justify-content: center; }
+        
+        /* Terminal Panel */
+        .terminal-panel { grid-row: 2 / 3; grid-column: 2 / 4; }
+        .terminal-output {
+            flex: 1;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #a3be8c;
+            overflow-y: auto;
+            line-height: 1.5;
+        }
+        .term-error { color: #bf616a; }
+        .term-info { color: #88c0d0; }
+        .term-warn { color: #ebcb8b; }
+
+        /* Trading History / AI Panel */
+        .ai-panel { grid-row: 1 / 2; grid-column: 3 / 4; }
+        
+        .trade-list { padding: 1rem; overflow-y: auto; flex: 1; }
+        .trade-item { 
+            display: flex; justify-content: space-between; 
+            padding: 0.5rem 0; border-bottom: 1px dashed var(--border-color);
+            font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+        }
+        .trade-long { color: var(--profit); }
+        .trade-short { color: var(--loss); }
+        
+        .run-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--profit);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 1rem;
+            text-transform: uppercase;
+        }
+        .run-btn:hover { filter: brightness(1.1); }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ABAF<span>//CRYPTO</span></div>
+        <div class="header-stats">
+            <div class="stat"><span>MODE</span> Test (Historical)</div>
+            <div class="stat"><span>BALANCE</span> $10,000.00</div>
+            <div class="stat"><span>PNL</span> <span class="trade-long">+$0.00 (0.00%)</span></div>
+        </div>
+        <button class="buy-vps-btn" id="btn-buy-vps">Buy VPS &amp; Deploy</button>
+    </header>
+
+    <main>
+        <!-- Left: Configuration -->
+        <div class="panel config-panel">
+            <div class="panel-header">Bot Configuration</div>
+            <div style="margin-top: 1rem;">
+                <div class="form-group">
+                    <label>Exchange / Source</label>
+                    <select class="form-control" id="exchange-select">
+                        <option value="hyperliquid">Hyperliquid (Testnet)</option>
+                        <option value="binance">Binance (Historical)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Pair</label>
+                    <select class="form-control" id="pair-select">
+                        <option value="BTC-USD">BTC/USD</option>
+                        <option value="ETH-USD">ETH/USD</option>
+                        <option value="SOL-USD">SOL/USD</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Strategy Type</label>
+                    <select class="form-control" id="strategy-type">
+                        <option value="human">Human's Bot (Preset)</option>
+                        <option value="llm">LLM Generated (Prompt)</option>
+                        <option value="custom">Custom Python</option>
+                    </select>
+                </div>
+                <div class="form-group" id="code-group">
+                    <label>Strategy Code / Prompt</label>
+                    <textarea class="form-control code-editor" id="strategy-code"># Prompt the LLM or write Python
+# Example: 
+# Buy when RSI(14) < 30 and MACD crosses up
+# Sell when RSI(14) > 70</textarea>
+                </div>
+                
+                <button class="run-btn" id="btn-run-sim">Run Simulation</button>
+            </div>
+        </div>
+
+        <!-- Center: Chart -->
+        <div class="panel chart-panel">
+            <div class="panel-header">
+                Market Data (Hyperliquid)
+                <button style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:0.8rem;" id="btn-export">Export Excel</button>
+            </div>
+            <div class="chart-container" id="tv-chart-container">
+                <span style="color:var(--text-muted);font-style:italic;">[ TradingView Lightweight Charts Placeholder ]<br><br>Waiting for simulation to start...</span>
+            </div>
+        </div>
+
+        <!-- Right: AI Agents / Trading History -->
+        <div class="panel ai-panel">
+            <div class="panel-header">Trading Logs & Signals</div>
+            <div class="trade-list" id="trade-list">
+                <div style="color:var(--text-muted);font-size:0.85rem;text-align:center;margin-top:2rem;">No trades yet</div>
+            </div>
+        </div>
+
+        <!-- Bottom: VPS Terminal -->
+        <div class="panel terminal-panel">
+            <div class="panel-header">VPS Sandbox Terminal</div>
+            <div class="terminal-output" id="terminal">
+[SYSTEM] ABAF Crypto Sandbox initialized.
+[SYSTEM] Ready to deploy containers.
+            </div>
+        </div>
+    </main>
+
+    <script src="js/terminal.js"></script>
+    <script src="js/charting.js"></script>
+    <script>
+        document.getElementById('btn-buy-vps').addEventListener('click', () => {
+            Term.log("Requesting VPS allocation from ABAF orchestrator...", "term-info");
+            setTimeout(() => Term.log("VPS Allocated: Node-X9 (sandbox mode). Ready.", "term-info"), 1000);
+        });
+
+        document.getElementById('btn-run-sim').addEventListener('click', async () => {
+            const code = document.getElementById('strategy-code').value;
+            const strat = document.getElementById('strategy-type').value;
+            Term.log(`[SIM] Initializing simulation using strategy: ${strat}`);
+            
+            try {
+                // Pointing to voicy backend on port 8000 for local test, or relative for prod
+                const response = await fetch('http://localhost:8000/api/crypto/simulate', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ strategy: strat, code: code })
+                });
+                
+                if (!response.ok) throw new Error("Simulation engine unavailable");
+                const data = await response.json();
+                Term.log(`[SIM] Engine response: ${data.status}`);
+            } catch (err) {
+                Term.log(`[ERROR] ${err.message}`, "term-error");
+            }
+        });
+    </script>
+</body>
+</html>
