@@ -277,8 +277,10 @@ class MarketMakerBot:
             Term.log(`[SIM] Initializing simulation using strategy: ${strat}`);
             
             try {
-                // Pointing to voicy backend on port 8000 for local test, or relative for prod
-                const response = await fetch('http://localhost:8000/api/crypto/simulate', {
+                const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+                const apiUrl = isLocal ? 'http://localhost:8001/api/crypto/simulate' : 'https://api.voicydroid.com/api/crypto/simulate';
+                
+                const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({ strategy: strat, code: code, session_id: sessionId })
