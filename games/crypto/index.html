@@ -289,6 +289,9 @@ class MarketMakerBot:
                     Charting.update(data.result.klines);
                     Term.log(`[CHART] Rendered ${data.result.klines.length} candles.`);
                 }
+                if (strat === 'llm' && data.result && data.result.generated_code) {
+                    Term.log(`[LLM] Generated Bot Code:\n${data.result.generated_code}`, "term-info");
+                }
             } catch (err) {
                 Term.log(`[ERROR] ${err.message}`, "term-error");
             }
