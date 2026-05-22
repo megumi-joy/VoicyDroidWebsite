@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voicy AI Architecture & System Guidelines</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .docs-container { max-width: 900px; margin: 40px auto; padding: 40px; background: rgba(20,20,25,0.7); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+        h1, h2, h3 { color: #fff; font-family: 'Outfit', sans-serif; }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; background: -webkit-linear-gradient(45deg, #a8ff78, #78ffd6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-top: 40px; }
+        p, li { font-size: 1.1rem; line-height: 1.6; color: #ccc; }
+        .alert { padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid; font-weight: 600; }
+        .alert.danger { background: rgba(255, 60, 60, 0.1); border-left-color: #ff3c3c; color: #ff8888; }
+        .alert.info { background: rgba(60, 150, 255, 0.1); border-left-color: #3c96ff; color: #88c0ff; }
+        code { font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; color: #a8ff78; }
+        .registry-block { background: #111; padding: 20px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; overflow-x: auto; margin-top: 10px; border: 1px solid #333; }
+        .btn-back { display: inline-block; padding: 10px 20px; background: rgba(255,255,255,0.1); color: #fff; text-decoration: none; border-radius: 6px; margin-bottom: 20px; transition: 0.3s; }
+        .btn-back:hover { background: rgba(255,255,255,0.2); }
+    </style>
+</head>
+<body data-theme="dark">
+    <div class="stars-container"></div>
+    
+    <div class="docs-container">
+        <a href="../index.html" class="btn-back">← Back to Main Hub</a>
+        
+        <h1>Voicy Ecosystem Architecture</h1>
+        <p>A unified manifesto and technical guideline for AI Agents working within the VoicyDroid infrastructure.</p>
+
+        <div class="alert danger">
+            <strong>CRITICAL RULE FOR AI AGENTS:</strong> DO NOT MANUALLY REBUILD, RE-DOWNLOAD, OR STORE DOCKER CONTAINERS OR ENGINE BINARIES (LIKE GODOT) ON GITHUB OR LOCAL HOST FILESYSTEMS. USE THE ESTABLISHED VOICY CLOUD ARCHITECTURE AND PRE-BUILT CONTAINERS.
+        </div>
+
+        <h2>1. The Container Philosophy</h2>
+        <p>
+            The VoicyDroid ecosystem is designed around <strong>API-driven builder containers</strong>. When the user requests a modification to a game (e.g., the Train Visual Novel, the Crypto Sandbox) or a heavy data generation task, the AI should <strong>NOT</strong> download Godot locally or write new Dockerfiles from scratch.
+        </p>
+        <p>
+            Instead, the AI must use the existing containers stored in the Cloud Registry. These containers are already configured by previous agents (like ABAF) with all dependencies pre-installed.
+        </p>
+
+        <h2>2. Existing Cloud Registry Images</h2>
+        <p>The following images are continuously maintained in the Google Artifact Registry and are available on the host machine:</p>
+        
+        <div class="registry-block">
+            <strong>Godot Builder/Agent Container:</strong><br>
+            <code>us-central1-docker.pkg.dev/voicydroid-494820/voicy-repo/godot-agent:latest</code><br><br>
+            <strong>Vision Processing Agent:</strong><br>
+            <code>ai-vision-agent:latest</code><br><br>
+            <strong>Blender 3D Agent:</strong><br>
+            <code>ai-blender-agent:latest</code>
+        </div>
+
+        <h2>3. Agent Workflow Instructions</h2>
+        <p>When tasked with modifying, building, or deploying a game inside the Voicy ecosystem, follow this exact flow:</p>
+        <ol>
+            <li><strong>Analyze the Source Code:</strong> Use standard file viewing tools to read the game's source (e.g., <code>games/train/godot_vn</code>).</li>
+            <li><strong>Edit Code:</strong> Modify the scripts, assets, or scenes as requested.</li>
+            <li><strong>Trigger the Container via API/CLI:</strong> Do <em>not</em> run the Godot binary locally. Instead, invoke a Docker command or Voicy API call that mounts the project directory into the <code>godot-agent:latest</code> container, and let the container export the WebAssembly build.</li>
+            <li><strong>Commit the Results:</strong> Commit the source code changes and the output WebAssembly to the frontend repository (<code>VoicyDroidWebsite</code>).</li>
+        </ol>
+
+        <div class="alert info">
+            <strong>Note to Agents:</strong> Always check <code>docker images</code> on the host system to see the exact tag names available before attempting to build anything new.
+        </div>
+        
+    </div>
+</body>
+</html>
