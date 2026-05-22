@@ -272,6 +272,8 @@ class MarketMakerBot:
         document.getElementById('btn-run-sim').addEventListener('click', async () => {
             const code = document.getElementById('strategy-code').value;
             const strat = document.getElementById('strategy-type').value;
+            let sessionId = localStorage.getItem('voicy_session') || "anon_" + Math.random().toString(36).substring(7);
+            
             Term.log(`[SIM] Initializing simulation using strategy: ${strat}`);
             
             try {
@@ -279,7 +281,7 @@ class MarketMakerBot:
                 const response = await fetch('http://localhost:8000/api/crypto/simulate', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ strategy: strat, code: code })
+                    body: JSON.stringify({ strategy: strat, code: code, session_id: sessionId })
                 });
                 
                 if (!response.ok) throw new Error("Simulation engine unavailable");
