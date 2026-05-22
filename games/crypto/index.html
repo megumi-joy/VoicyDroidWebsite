@@ -195,19 +195,22 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Strategy Type</label>
+                    <label>Robot Selection</label>
                     <select class="form-control" id="strategy-type">
-                        <option value="human">Human's Bot (Preset)</option>
-                        <option value="llm">LLM Generated (Prompt)</option>
-                        <option value="custom">Custom Python</option>
+                        <option value="hummingbot">Hummingbot (Ready-made Market Maker)</option>
+                        <option value="hypercrypto">HyperCrypto Bot (Ready-made Telegram Logic)</option>
+                        <option value="llm">LLM Programmer (Write text prompt)</option>
+                        <option value="custom">Custom Robot (Write your own Code)</option>
                     </select>
                 </div>
                 <div class="form-group" id="code-group">
-                    <label>Strategy Code / Prompt</label>
-                    <textarea class="form-control code-editor" id="strategy-code"># Prompt the LLM or write Python
-# Example: 
-# Buy when RSI(14) < 30 and MACD crosses up
-# Sell when RSI(14) > 70</textarea>
+                    <label>Robot Script / Prompt</label>
+                    <textarea class="form-control code-editor" id="strategy-code"># Hummingbot Market Maker Logic
+class MarketMakerBot:
+    def __init__(self):
+        self.spread = 0.005
+    def on_tick(self, data):
+        return {"action": "buy", "price": data['close'] * (1 - self.spread)}</textarea>
                 </div>
                 
                 <button class="run-btn" id="btn-run-sim">Run Simulation</button>
@@ -247,6 +250,20 @@
     <script src="js/terminal.js"></script>
     <script src="js/charting.js"></script>
     <script>
+        const scripts = {
+            hummingbot: `# Hummingbot Market Maker Logic\nclass MarketMakerBot:\n    def __init__(self):\n        self.spread = 0.005\n    def on_tick(self, data):\n        return {"action": "buy", "price": data['close'] * (1 - self.spread)}`,
+            hypercrypto: `// HyperCryptoBot Logic (Node.js style)\n// Requires user rules processing\nif (price <= rule.threshold) {\n    executeBuy(mint, amount);\n}`,
+            llm: `Напиши мне торгового робота, который покупает при пересечении MACD снизу вверх и использует RSI.`,
+            custom: `# Your Python Trading Code\n`
+        };
+
+        document.getElementById('strategy-type').addEventListener('change', (e) => {
+            document.getElementById('strategy-code').value = scripts[e.target.value] || '';
+            if (e.target.value === 'llm') {
+                Term.log("Switched to LLM Programmer. Enter your natural language prompt.", "term-info");
+            }
+        });
+
         document.getElementById('btn-buy-vps').addEventListener('click', () => {
             Term.log("Requesting VPS allocation from ABAF orchestrator...", "term-info");
             setTimeout(() => Term.log("VPS Allocated: Node-X9 (sandbox mode). Ready.", "term-info"), 1000);

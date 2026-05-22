@@ -177,6 +177,11 @@
                 <span id="conn-status" class="status-dot"></span>
                 <span id="conn-label">Connecting...</span>
             </div>
+            <div id="user-badge" style="display:none;font-size:0.8rem;color:var(--text-dim);display:flex;align-items:center;gap:6px">
+                <span id="user-name"></span>
+                <span id="user-credits" style="color:var(--accent);font-weight:600"></span>
+            </div>
+            <a id="login-btn" href="#" style="font-size:0.8rem;padding:6px 12px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;display:none">🔑 Login</a>
             <button id="settings-toggle" class="settings-btn" title="Settings">⚙️</button>
             <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">🌓</button>
         </div>
@@ -214,8 +219,58 @@
 
     <script>
     let API = localStorage.getItem('voicy_api_url') || 'https://api.voicydroid.com';
+    const SSO_URL = 'https://sso.voicydroid.com';
     let sessionId = localStorage.getItem('voicy_session') || crypto.randomUUID();
     localStorage.setItem('voicy_session', sessionId);
+
+    // ── SSO Token handling ────────────────────────────────────────────────────
+    // Extract token from URL hash after Google OAuth redirect
+    const hashParams = new URLSearchParams(window.location.hash.slice(1));
+    const hashToken = hashParams.get('token');
+    if (hashToken) {
+        localStorage.setItem('voicy_sso_token', hashToken);
+        history.replaceState(null, '', window.location.pathname); // clean URL
+    }
+    let ssoToken = localStorage.getItem('voicy_sso_token') || null;
+
+    function authHeaders() {
+        return ssoToken ? { 'Authorization': `Bearer ${ssoToken}` } : {};
+    }
+
+    async function loadProfile() {
+        const loginBtn   = document.getElementById('login-btn');
+        const userBadge  = document.getElementById('user-badge');
+        const userName   = document.getElementById('user-name');
+        const userCredits = document.getElementById('user-credits');
+
+        if (!ssoToken) {
+            // Show login button
+            loginBtn.style.display = 'inline-flex';
+            const returnUrl = encodeURIComponent(window.location.href);
+            loginBtn.href = `${SSO_URL}/auth/login?redirect_to=${returnUrl}`;
+            return;
+        }
+        try {
+            const r = await fetch(`${API}/v1/me`, { headers: authHeaders() });
+            if (!r.ok) throw new Error('SSO check failed');
+            const profile = await r.json();
+            if (profile.logged_in) {
+                userBadge.style.display = 'flex';
+                userName.textContent = profile.name.split(' ')[0];
+                userCredits.textContent = `$${profile.credits.toFixed(3)}`;
+                loginBtn.style.display = 'none';
+            } else {
+                loginBtn.style.display = 'inline-flex';
+                const returnUrl = encodeURIComponent(window.location.href);
+                loginBtn.href = `${SSO_URL}/auth/login?redirect_to=${returnUrl}`;
+            }
+        } catch {
+            loginBtn.style.display = 'inline-flex';
+            const returnUrl = encodeURIComponent(window.location.href);
+            loginBtn.href = `${SSO_URL}/auth/login?redirect_to=${returnUrl}`;
+        }
+    }
+    loadProfile();
 
     const messagesEl = document.getElementById('messages');
     const inputEl    = document.getElementById('chat-input');
@@ -311,7 +366,7 @@
         try {
             const resp = await fetch(`${API}/v1/chat`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', ...authHeaders() },
                 body: JSON.stringify({
                     text: text,
                     session_id: sessionId,
@@ -321,7 +376,11 @@
 
             if (!resp.ok) {
                 const err = await resp.json().catch(() => ({}));
-                showError(err.detail || `Error ${resp.status}`);
+                if (resp.status === 402) {
+                    showError('Insufficient credits. Top up at voicydroid.com/billing');
+                } else {
+                    showError(err.detail || `Error ${resp.status}`);
+                }
                 typingEl.classList.remove('active');
                 sendBtn.disabled = false;
                 return;
@@ -336,6 +395,8 @@
                 document.getElementById('mem-kb').textContent = `KB: ${data.memory_stats.kb_entries}`;
                 document.getElementById('mem-archive').textContent = `Archive: ${data.memory_stats.archived}`;
             }
+            // Refresh credits after billing
+            if (ssoToken) loadProfile();
         } catch (e) {
             showError('Failed to connect to Voicy API');
             typingEl.classList.remove('active');
@@ -389,22 +450,28 @@
         formData.append('session_id', sessionId);
         
         try {
-            const resp = await fetch(`${API}/process_audio`, {
+            const resp = await fetch(`${API}/v1/voice`, {
                 method: 'POST',
-                headers: { 'Authorization': 'Bearer user_web' },
+                headers: authHeaders(),   // SSO token if logged in
                 body: formData
             });
             
-            if (!resp.ok) throw new Error('API Error');
+            if (!resp.ok) {
+                if (resp.status === 402) showError('Insufficient credits. Top up at voicydroid.com');
+                else throw new Error('API Error');
+            }
             const data = await resp.json();
             
-            if (data.transcription) addMessage('user', data.transcription);
-            if (data.response) addMessage('assistant', data.response);
+            if (data.transcript)    addMessage('user', `🎤 ${data.transcript}`);
+            if (data.response_text) addMessage('assistant', data.response_text);
+            if (data.response)      addMessage('assistant', data.response);
             
             if (data.audio_base64) {
                 const audio = new Audio("data:audio/wav;base64," + data.audio_base64);
                 audio.play();
             }
+            // Refresh credits after billing
+            if (ssoToken) loadProfile();
         } catch (e) {
             showError('Failed to process audio.');
         }
