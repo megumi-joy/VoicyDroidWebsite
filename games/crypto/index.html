@@ -243,6 +243,7 @@
         </div>
     </main>
 
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
     <script src="js/terminal.js"></script>
     <script src="js/charting.js"></script>
     <script>
@@ -267,6 +268,10 @@
                 if (!response.ok) throw new Error("Simulation engine unavailable");
                 const data = await response.json();
                 Term.log(`[SIM] Engine response: ${data.status}`);
+                if (data.result && data.result.klines) {
+                    Charting.update(data.result.klines);
+                    Term.log(`[CHART] Rendered ${data.result.klines.length} candles.`);
+                }
             } catch (err) {
                 Term.log(`[ERROR] ${err.message}`, "term-error");
             }
