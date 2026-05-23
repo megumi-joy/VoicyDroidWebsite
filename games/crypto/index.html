@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto Algo Trading Sandbox | ABAF</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>NeuroTrade SaaS | Crypto Algo Sandbox</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #0b0f19;
-            --panel-bg: rgba(20, 25, 40, 0.6);
-            --border-color: rgba(60, 70, 100, 0.4);
+            --panel-bg: rgba(20, 25, 40, 0.7);
+            --border-color: rgba(60, 70, 100, 0.5);
             --accent: #00d2ff;
-            --accent-glow: rgba(0, 210, 255, 0.3);
+            --accent-glow: rgba(0, 210, 255, 0.2);
             --text-main: #e2e8f0;
             --text-muted: #94a3b8;
             --profit: #10b981;
             --loss: #ef4444;
+            --warning: #f59e0b;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,295 +25,341 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
             background: radial-gradient(circle at top right, #1a233a 0%, var(--bg-color) 70%);
+        }
+
+        /* --- LOGIN SCREEN --- */
+        #login-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 15, 25, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .login-box {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.1);
+            max-width: 400px; width: 100%;
+        }
+        .login-box h1 { margin-bottom: 0.5rem; font-weight: 800; letter-spacing: -1px; }
+        .login-box p { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.9rem; }
+        .btn-google {
+            background: #fff; color: #000;
+            border: none; padding: 0.8rem 1.5rem;
+            border-radius: 8px; font-weight: 600; font-size: 1rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; width: 100%;
+            transition: all 0.2s ease;
+        }
+        .btn-google:hover { filter: brightness(0.9); }
+        .btn-google img { width: 20px; margin-right: 10px; }
+
+        /* --- DASHBOARD --- */
+        #app-dashboard {
+            display: none; /* Shown after auth */
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
         }
 
         header {
             padding: 1rem 2rem;
             border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(11, 15, 25, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 10;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(11, 15, 25, 0.8); backdrop-filter: blur(10px);
         }
-
         .logo { font-weight: 800; font-size: 1.2rem; color: var(--accent); letter-spacing: 1px; }
-        .logo span { color: var(--text-main); }
+        .logo span { color: var(--text-main); font-weight: 300; }
         
-        .header-stats { display: flex; gap: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
-        .stat span { color: var(--text-muted); font-size: 0.8rem; margin-right: 0.5rem; }
-        
-        .buy-vps-btn {
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-        .buy-vps-btn:hover { background: var(--accent); color: var(--bg-color); }
+        .user-profile { display: flex; align-items: center; gap: 1rem; }
+        .user-profile img { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--accent); }
+        .btn-logout { background: transparent; color: var(--text-muted); border: 1px solid var(--border-color); padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer; }
+        .btn-logout:hover { color: #fff; border-color: #fff; }
 
+        /* Stats Row */
+        .stats-row {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; padding: 1.5rem 2rem;
+        }
+        .stat-card {
+            background: var(--panel-bg); border: 1px solid var(--border-color);
+            padding: 1rem 1.5rem; border-radius: 8px;
+        }
+        .stat-card h4 { color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .stat-card .value { font-size: 1.8rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; }
+        .stat-card .profit { color: var(--profit); }
+
+        /* Main Grid */
         main {
-            display: grid;
-            grid-template-columns: 300px 1fr 400px;
-            grid-template-rows: 1fr 300px;
-            gap: 1rem;
-            padding: 1rem;
-            height: calc(100vh - 60px);
+            flex: 1; padding: 0 2rem 2rem 2rem; overflow-y: auto;
+            display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto auto; gap: 1.5rem;
         }
 
         .panel {
-            background: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            backdrop-filter: blur(12px);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
+            background: var(--panel-bg); border: 1px solid var(--border-color);
+            border-radius: 12px; display: flex; flex-direction: column; overflow: hidden;
         }
-
         .panel-header {
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            background: rgba(0,0,0,0.2);
-            display: flex;
-            justify-content: space-between;
+            padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-color);
+            font-weight: 600; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center;
+        }
+        .panel-content { padding: 1.5rem; overflow-y: auto; }
+
+        /* Lists & Tables */
+        .data-list { list-style: none; }
+        .data-list li {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .data-list li:last-child { border-bottom: none; }
+        
+        .badge { padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
+        .badge.active { background: rgba(16, 185, 129, 0.2); color: var(--profit); }
+        .badge.test { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+        .badge.new { background: rgba(0, 212, 255, 0.2); color: var(--accent); }
+
+        .btn-primary {
+            background: var(--accent); color: var(--bg-color); border: none;
+            padding: 0.5rem 1rem; border-radius: 4px; font-weight: 600; cursor: pointer;
+            width: 100%; transition: all 0.2s;
+        }
+        .btn-primary:hover { filter: brightness(1.1); box-shadow: 0 0 15px var(--accent-glow); }
+
+        .form-input {
+            width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color);
+            color: #fff; padding: 0.75rem; border-radius: 4px; margin-bottom: 1rem; font-family: inherit;
         }
 
-        /* Bot Config Panel */
-        .config-panel { grid-row: 1 / 3; grid-column: 1 / 2; padding: 1rem; overflow-y: auto; }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
-        .form-control {
-            width: 100%;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 0.75rem;
-            border-radius: 4px;
-            font-family: inherit;
-        }
-        select.form-control { appearance: none; }
-        
-        .code-editor {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            resize: vertical;
-            min-height: 200px;
-        }
-
-        /* Chart Panel */
-        .chart-panel { grid-row: 1 / 2; grid-column: 2 / 3; }
-        .chart-container { flex: 1; display: flex; align-items: center; justify-content: center; }
-        
-        /* Terminal Panel */
-        .terminal-panel { grid-row: 2 / 3; grid-column: 2 / 4; }
-        .terminal-output {
-            flex: 1;
-            padding: 1rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: #a3be8c;
-            overflow-y: auto;
-            line-height: 1.5;
-        }
-        .term-error { color: #bf616a; }
-        .term-info { color: #88c0d0; }
-        .term-warn { color: #ebcb8b; }
-
-        /* Trading History / AI Panel */
-        .ai-panel { grid-row: 1 / 2; grid-column: 3 / 4; }
-        
-        .trade-list { padding: 1rem; overflow-y: auto; flex: 1; }
-        .trade-item { 
-            display: flex; justify-content: space-between; 
-            padding: 0.5rem 0; border-bottom: 1px dashed var(--border-color);
-            font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
-        }
-        .trade-long { color: var(--profit); }
-        .trade-short { color: var(--loss); }
-        
-        .run-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--profit);
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-weight: 800;
-            cursor: pointer;
-            margin-top: 1rem;
-            text-transform: uppercase;
-        }
-        .run-btn:hover { filter: brightness(1.1); }
-        
+        /* Responsive Layout */
+        .bots-panel { grid-column: 1 / 3; }
+        .signals-panel { grid-column: 3 / 4; grid-row: 1 / 3; }
+        .balances-panel { grid-column: 1 / 2; }
+        .feedback-panel { grid-column: 2 / 3; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">ABAF<span>//CRYPTO</span></div>
-        <div class="header-stats">
-            <div class="stat"><span>MODE</span> Test (Historical)</div>
-            <div class="stat"><span>BALANCE</span> $10,000.00</div>
-            <div class="stat"><span>PNL</span> <span class="trade-long">+$0.00 (0.00%)</span></div>
-        </div>
-        <button class="buy-vps-btn" id="btn-buy-vps">Buy VPS &amp; Deploy</button>
-    </header>
-
-    <!-- SaaS Showcase Section -->
-    <div class="saas-showcase" style="padding: 2rem; text-align: center; background: rgba(0,210,255,0.05); border-bottom: 1px solid var(--border-color);">
-        <h2 style="margin-bottom: 0.5rem; color: #fff;">NeuroTrade by Voicy: The Ultimate Algo-Trading SaaS</h2>
-        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Deployed across Binance, Polygon, and PancakeSwap. AI-driven signals and real-time execution.</p>
-        <div style="max-width: 900px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 0 30px rgba(0,210,255,0.2); border: 1px solid var(--border-color);">
-            <img src="assets/saas_dashboard.png" alt="NeuroTrade SaaS Dashboard showing live crypto trades" style="width: 100%; display: block;">
-        </div>
-        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center;">
-            <button class="buy-vps-btn" style="background: var(--accent); color: var(--bg-color);">Start 14-Day Free Trial</button>
-            <button class="buy-vps-btn">Connect Telegram Bot</button>
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen">
+        <div class="login-box">
+            <h1>NeuroTrade</h1>
+            <p>SaaS Algorithmic Trading by Voicy</p>
+            <button class="btn-google" id="btn-login-google">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                Sign in with Google
+            </button>
+            <p style="margin-top: 1.5rem; font-size: 0.75rem;">Access restricted to authorized Voicy Cloud users.<br>Incognito mode supported.</p>
         </div>
     </div>
 
-    <main>
-        <!-- Left: Configuration -->
-        <div class="panel config-panel">
-            <div class="panel-header">Bot Configuration</div>
-            <div style="margin-top: 1rem;">
-                <div class="form-group">
-                    <label>Exchange / Source</label>
-                    <select class="form-control" id="exchange-select">
-                        <option value="hyperliquid">Hyperliquid (Testnet)</option>
-                        <option value="binance">Binance (Historical)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Pair</label>
-                    <select class="form-control" id="pair-select">
-                        <option value="BTC-USD">BTC/USD</option>
-                        <option value="ETH-USD">ETH/USD</option>
-                        <option value="SOL-USD">SOL/USD</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Robot Selection</label>
-                    <select class="form-control" id="strategy-type">
-                        <option value="hummingbot">Hummingbot (Ready-made Market Maker)</option>
-                        <option value="hypercrypto">HyperCrypto Bot (Ready-made Telegram Logic)</option>
-                        <option value="llm">LLM Programmer (Write text prompt)</option>
-                        <option value="custom">Custom Robot (Write your own Code)</option>
-                    </select>
-                </div>
-                <div class="form-group" id="code-group">
-                    <label>Robot Script / Prompt</label>
-                    <textarea class="form-control code-editor" id="strategy-code"># Hummingbot Market Maker Logic
-class MarketMakerBot:
-    def __init__(self):
-        self.spread = 0.005
-    def on_tick(self, data):
-        return {"action": "buy", "price": data['close'] * (1 - self.spread)}</textarea>
-                </div>
-                
-                <button class="run-btn" id="btn-run-sim">Run Simulation</button>
+    <!-- DASHBOARD -->
+    <div id="app-dashboard">
+        <header>
+            <div class="logo">NeuroTrade <span>by Voicy</span></div>
+            <div class="user-profile">
+                <span id="user-email" style="font-size: 0.85rem; color: var(--text-muted);"></span>
+                <img id="user-avatar" src="" alt="Avatar" style="display:none;">
+                <button class="btn-logout" id="btn-logout">Sign Out</button>
+            </div>
+        </header>
+
+        <div class="stats-row">
+            <div class="stat-card">
+                <h4>Total PNL</h4>
+                <div class="value profit">+$412.50</div>
+            </div>
+            <div class="stat-card">
+                <h4>Active Bots</h4>
+                <div class="value">3 <span style="font-size:1rem; color:var(--text-muted);">/ 5 limit</span></div>
+            </div>
+            <div class="stat-card">
+                <h4>LLM API Tokens Used</h4>
+                <div class="value">14,500</div>
+            </div>
+            <div class="stat-card">
+                <h4>SaaS VPS Uptime</h4>
+                <div class="value">42h 12m</div>
             </div>
         </div>
 
-        <!-- Center: Chart -->
-        <div class="panel chart-panel">
-            <div class="panel-header">
-                Market Data (Hyperliquid)
-                <button style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:0.8rem;" id="btn-export">Export Excel</button>
+        <main>
+            <!-- Balances -->
+            <div class="panel balances-panel">
+                <div class="panel-header">Wallets & Balances <button style="background:none; border:none; color:var(--accent); cursor:pointer;">+ Deposit</button></div>
+                <div class="panel-content">
+                    <ul class="data-list">
+                        <li>
+                            <div><strong>USDT</strong> <span class="badge active">REAL</span></div>
+                            <div style="font-family:'JetBrains Mono';">$1,450.00</div>
+                        </li>
+                        <li>
+                            <div><strong>BTC</strong> <span class="badge test">TESTNET</span></div>
+                            <div style="font-family:'JetBrains Mono';">0.45000000</div>
+                        </li>
+                        <li>
+                            <div><strong>BNB</strong> <span class="badge active">REAL</span></div>
+                            <div style="font-family:'JetBrains Mono';">12.500</div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="chart-container" id="tv-chart-container">
-                <span style="color:var(--text-muted);font-style:italic;">[ TradingView Lightweight Charts Placeholder ]<br><br>Waiting for simulation to start...</span>
-            </div>
-        </div>
 
-        <!-- Right: AI Agents / Trading History -->
-        <div class="panel ai-panel">
-            <div class="panel-header">Trading Logs & Signals</div>
-            <div class="trade-list" id="trade-list">
-                <div style="color:var(--text-muted);font-size:0.85rem;text-align:center;margin-top:2rem;">No trades yet</div>
+            <!-- Active Bots -->
+            <div class="panel bots-panel">
+                <div class="panel-header">Active Bots & Simulations <button style="background:none; border:none; color:var(--accent); cursor:pointer;">+ New Container</button></div>
+                <div class="panel-content" style="padding:0;">
+                    <table style="width:100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted);">
+                                <th style="padding: 1rem 1.5rem;">Container ID</th>
+                                <th>Strategy</th>
+                                <th>Exchange</th>
+                                <th>Status</th>
+                                <th>Uptime</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 1rem 1.5rem; font-family:'JetBrains Mono';">hb-sim-4b0b0f22</td>
+                                <td>pure_market_making (BTC-USDT)</td>
+                                <td>Binance Paper Trade</td>
+                                <td><span class="badge active">Running</span></td>
+                                <td>2h 14m</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 1rem 1.5rem; font-family:'JetBrains Mono';">poly-arb-01</td>
+                                <td>arbitrage (MATIC)</td>
+                                <td>Polygon / Uniswap</td>
+                                <td><span class="badge active">Running</span></td>
+                                <td>14h 00m</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
 
-        <!-- Bottom: VPS Terminal -->
-        <div class="panel terminal-panel">
-            <div class="panel-header">VPS Sandbox Terminal</div>
-            <div class="terminal-output" id="terminal">
-[SYSTEM] ABAF Crypto Sandbox initialized.
-[SYSTEM] Ready to deploy containers.
+            <!-- Signals & Novelties -->
+            <div class="panel signals-panel">
+                <div class="panel-header">AI Signals & Novelties</div>
+                <div class="panel-content">
+                    <h4 style="color:var(--text-muted); margin-bottom:1rem; font-size:0.75rem; text-transform:uppercase;">Latest Signals</h4>
+                    <ul class="data-list" style="margin-bottom: 2rem;">
+                        <li>
+                            <div><strong>MATIC/USDT</strong> <span style="display:block; font-size:0.7rem; color:var(--text-muted);">MACD Crossover detected</span></div>
+                            <div style="text-align:right;"><span class="badge active">LONG 91%</span><br><span style="font-size:0.7rem;">Entry: $1.15</span></div>
+                        </li>
+                        <li>
+                            <div><strong>CAKE/BNB</strong> <span style="display:block; font-size:0.7rem; color:var(--text-muted);">PancakeSwap Liquidity Spike</span></div>
+                            <div style="text-align:right;"><span class="badge active">LONG 88%</span><br><span style="font-size:0.7rem;">Entry: $3.40</span></div>
+                        </li>
+                    </ul>
+
+                    <h4 style="color:var(--text-muted); margin-bottom:1rem; font-size:0.75rem; text-transform:uppercase;">New Cryptocurrencies</h4>
+                    <ul class="data-list">
+                        <li>
+                            <div><strong>TIA (Celestia)</strong></div>
+                            <div><span class="badge new">NEW PAIR</span></div>
+                        </li>
+                        <li>
+                            <div><strong>SUI (Sui Network)</strong></div>
+                            <div><span class="badge new">NEW DEX</span></div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </main>
 
-    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
-    <script src="js/terminal.js"></script>
-    <script src="js/charting.js"></script>
-    <script>
-        const scripts = {
-            hummingbot: `# Hummingbot Market Maker Logic\nclass MarketMakerBot:\n    def __init__(self):\n        self.spread = 0.005\n    def on_tick(self, data):\n        return {"action": "buy", "price": data['close'] * (1 - self.spread)}`,
-            hypercrypto: `// HyperCryptoBot Logic (Node.js style)\n// Requires user rules processing\nif (price <= rule.threshold) {\n    executeBuy(mint, amount);\n}`,
-            llm: `Напиши мне торгового робота, который покупает при пересечении MACD снизу вверх и использует RSI.`,
-            custom: `# Your Python Trading Code\n`
+            <!-- Settings & Feedback -->
+            <div class="panel feedback-panel">
+                <div class="panel-header">Settings & Feedback</div>
+                <div class="panel-content">
+                    <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom: 1rem;">Have a feature request or found a bug in the LLM execution?</p>
+                    <textarea class="form-input" rows="3" placeholder="Describe the issue or feature..."></textarea>
+                    <button class="btn-primary">Submit to Admin</button>
+                    
+                    <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                        <a href="#" style="color:var(--accent); font-size:0.8rem; text-decoration:none;">📄 Read Deployment & Setup Instructions</a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Firebase SDK (Modular v9) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // IMPORTANT: The admin must replace this with their actual Firebase Config!
+        const firebaseConfig = {
+            apiKey: "AIzaSyDummyKeyForVoicyDroidWebsiteReplaceMe",
+            authDomain: "voicydroid-crypto.firebaseapp.com",
+            projectId: "voicydroid-crypto",
+            storageBucket: "voicydroid-crypto.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcdef"
         };
 
-        document.getElementById('strategy-type').addEventListener('change', (e) => {
-            document.getElementById('strategy-code').value = scripts[e.target.value] || '';
-            if (e.target.value === 'llm') {
-                Term.log("Switched to LLM Programmer. Enter your natural language prompt.", "term-info");
-            }
-        });
+        let auth;
+        try {
+            const app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            console.log("Firebase Auth initialized.");
+        } catch (e) {
+            console.warn("Firebase config is dummy. Auth simulation fallback enabled for frontend preview.", e);
+        }
 
-        document.getElementById('btn-buy-vps').addEventListener('click', () => {
-            Term.log("Requesting VPS allocation from ABAF orchestrator...", "term-info");
-            setTimeout(() => Term.log("VPS Allocated: Node-X9 (sandbox mode). Ready.", "term-info"), 1000);
-        });
+        const loginScreen = document.getElementById('login-screen');
+        const dashboard = document.getElementById('app-dashboard');
+        const btnLogin = document.getElementById('btn-login-google');
+        const btnLogout = document.getElementById('btn-logout');
 
-        document.getElementById('btn-run-sim').addEventListener('click', async () => {
-            const code = document.getElementById('strategy-code').value;
-            const strat = document.getElementById('strategy-type').value;
-            let sessionId = localStorage.getItem('voicy_session') || "anon_" + Math.random().toString(36).substring(7);
-            
-            Term.log(`[SIM] Initializing simulation using strategy: ${strat}`);
-            
-            try {
-                const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-                const apiUrl = isLocal ? 'http://localhost:8001/api/crypto/simulate' : 'https://api.voicydroid.com/api/crypto/simulate';
-                
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ strategy: strat, code: code, session_id: sessionId })
-                });
-                
-                if (!response.ok) throw new Error("Simulation engine unavailable");
-                const data = await response.json();
-                Term.log(`[SIM] Engine response: ${data.status}`);
-                if (data.result && data.result.klines) {
-                    Charting.update(data.result.klines);
-                    Term.log(`[CHART] Rendered ${data.result.klines.length} candles.`);
-                }
-                if (strat === 'llm' && data.result && data.result.generated_code) {
-                    Term.log(`[LLM] Generated Bot Code:\n${data.result.generated_code}`, "term-info");
-                }
-            } catch (err) {
-                Term.log(`[ERROR] ${err.message}`, "term-error");
+        // MOCK AUTH STATE (For preview if firebase is not configured yet)
+        let isSimulatedAuth = !auth;
+
+        function showDashboard(user) {
+            loginScreen.style.display = 'none';
+            dashboard.style.display = 'flex';
+            document.getElementById('user-email').textContent = user.email || 'trader@voicydroid.com';
+            if (user.photoURL) {
+                const avatar = document.getElementById('user-avatar');
+                avatar.src = user.photoURL;
+                avatar.style.display = 'block';
             }
-        });
+        }
+
+        function showLogin() {
+            loginScreen.style.display = 'flex';
+            dashboard.style.display = 'none';
+        }
+
+        if (!isSimulatedAuth) {
+            // Real Firebase Auth
+            onAuthStateChanged(auth, (user) => {
+                if (user) { showDashboard(user); } else { showLogin(); }
+            });
+
+            btnLogin.addEventListener('click', () => {
+                const provider = new GoogleAuthProvider();
+                signInWithPopup(auth, provider).catch(error => alert("Auth Error: " + error.message));
+            });
+
+            btnLogout.addEventListener('click', () => signOut(auth));
+        } else {
+            // Simulated fallback for github pages / local testing without keys
+            console.log("[SIMULATED AUTH MODE]");
+            btnLogin.addEventListener('click', () => {
+                showDashboard({ email: "demo-admin@google.com" });
+            });
+            btnLogout.addEventListener('click', () => {
+                showLogin();
+            });
+        }
     </script>
 </body>
 </html>
